@@ -97,11 +97,7 @@
                     >Services </a>
                  
                 </li>
-                <li class="nav-item">
-                  <a href="career.html" class="nav-link"
-                    >Career </a>
-                 
-                </li>
+               
                 
                 <li class="nav-item">
                   <a href="blog.html" class="nav-link"
@@ -113,6 +109,9 @@
                     >Contact </a>
                   
                 </li>
+                <li class="nav-item d-lg-none">
+                  <button class="btn btn-primary open-signup">Signup</button>
+              </li>
               </ul>
               <div class="option-item navber-search-box d-none d-lg-block">
                 <i class="search-btn fa fa-search"></i>
@@ -133,10 +132,53 @@
                   </div>
                 </div>
               </div>
-              <div class="other-option">
-                <a class="btn btn-primary" href="mailto:info@example.com"
-                  >Signup</a
-                >
+              <!--signup-->
+              <div>
+                <button class="btn btn-primary open-signup d-none d-lg-block">Signup</button>
+                <div class="signup-popup-container" id="signup-popup-container">
+                  <div class="signup-popup-card">
+                    <div class="margin-right w-100">
+                      <i class="close-signup fa fa-times"></i>
+                    </div>
+                    <div class="container">
+                      <h2 class="text-center mb-3" style="color:hsl(19, 100%, 50%);">Sign up</h2>
+                      <form id="loginForm"  style="display: flex;flex-direction: column;">
+                        <label class="signup-label"><b>Email</b></label>  
+                        <input type="text" id="email" name="email" placeholder="email" class="rounded p-2 signup-input-email-field mb-3" style="border-color:darkgray;" required>
+                          <button type="submit" class="btn btn-primary rounded-3">submit</button>
+                          <p id="message"></p>
+                      </form>
+                      <div class="d-none" id="otpForm">
+                      <form id="otpVerificationForm" style="display: flex;flex-direction: column;">
+    <label class="signup-label"><b>Email</b></label>  
+    <input type="text" id="emailValue" name="emailValue" placeholder="email" class="rounded p-2 signup-input-email-field" style="border-color:darkgray;" disabled>
+    <label><b>Enter OTP:</b></label>
+
+    <div class="otp-container">
+        <input type="text" class="otp-input" name="otp1" id="otp1" maxlength="1" require>
+        <input type="text" name="otp2" class="otp-input" id="otp2" maxlength="1" disabled require>
+        <input type="text" name="otp3" class="otp-input" id="otp3" maxlength="1" disabled require>
+        <input type="text" name="otp4" class="otp-input" id="otp4" maxlength="1" disabled>
+        <input type="text" name="otp5" class="otp-input" id="otp5" maxlength="1" disabled>
+        <input type="text" name="otp6" class="otp-input" id="otp6" maxlength="1" disabled>
+    </div>
+
+    <p><b>TimeLeft: <span id="timeLeft"></span></b></p>
+    <button type="submit" class="btn btn-primary rounded-3">submit</button>
+
+</form>
+    <div style="text-align:right">
+      <button class="text-primary" id="resendOtp" style="background-color:transparent;border-width:0px; margin-top:4px;"><b>Resend OTP</b></button></br>
+      <b id="otpResponse" class="text-primary"></b>
+
+    </div>
+
+                    </div>
+                  </div>
+                </div>
+                
+                  
+                </div>
               </div>
             </div>
           </nav>
@@ -167,7 +209,7 @@
                     </p>
                   </div>
                   <div class="home-slider-btn-box">
-                    <a href="#0" class="btn btn-primary mr-15">Book now</a>
+                    <a href="#" class="btn btn-primary mr-15 open-book-now-popup">Book now</a>
                     
                   </div>
                 </div>
@@ -193,7 +235,7 @@
                   </div>
                   <div class="home-slider-btn-box">
                     
-                    <a href="#0" class="btn btn-primary">Book Now</a>
+                    <a href="#" class="btn btn-primary open-book-now-popup">Book Now</a>
                   </div>
                 </div>
               </div>
@@ -218,14 +260,82 @@
                   </div>
                   <div class="home-slider-btn-box">
                     
-                    <a href="#0" class="btn btn-primary">Book Now</a>
+                    <a href="#" class="btn btn-primary open-book-now-popup">Book Now</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+  
       </div>
+            <!--Book now popup start-->
+            <div class="book-now-popup-container" id="book-now-popup-container">
+              <div class="book-now-popup-card">
+                <div class="margin-right w-100">
+                  <i class="close-booknow fa fa-times"></i>
+                </div>
+                <div class="container">
+                  <h2 class="text-center mb-5" style="color: hsl(19,100%,50%);">Enquire Form</h2>
+                  <form id="enquire-form" style="display: flex; flex-direction: column;">
+                    <div class="enquire-input-container">
+                      <label for="username">Full Name<span>*</span></label>
+                      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="enquire-input-container">
+                      <label for="number">WhatsApp Number<span>*</span></label>
+                      <input id="number" type="tel" placeholder="Enter you Whatsapp number" required>
+                    </div>
+                    <div class="enquire-input-container">
+                      <label for="address">Current Address<span>*</span></label>
+                      <textarea id="address" cols="" rows="" placeholder="Enter your current address"></textarea>
+                    </div>
+                    <div class="enquire-input-container">
+                      <label for="near-busstop">Nearby Bus-Stop<span>*</span></label>
+                      <input type="text" id="near-busstop" placeholder="Enter your near by bus-stop" required>
+                    </div>
+                    <div class="enquire-input-container">
+                      <label for="exam">Select Exam<span>*</span></label>
+                      <select id="exam" >
+                        <option value="select exam">Select an Exam</option>
+                        <option value="select exam">UPSC</option>
+                        <option value="select exam">JEE</option>
+                        <option value="select exam">CAT</option>
+                      </select>
+                    </div>
+                    <div class="enquire-input-container">
+                      <label for="exam-date">Select Exam Date<span>*</span></label>
+                      <input type="date" id="exam-date" placeholder="" required >
+                    </div>
+                    <div class="enquire-input-container">
+                      <label for="city">Exam City<span>*</span></label>
+                      <input type="text" id="city" placeholder="Enter your exam city" required>
+                    </div>
+                    <div class="enquire-input-container">
+                        <label for="center">Exam Center<span>*</span></label>
+                        <input type="text" id="center" placeholder="Enter your exam center">
+                    </div>
+                    <div class="enquire-input-container">
+                        <label for="service">Select Required Service<span>*</span></label>
+                        <select id="service">
+                          <option value="select service">Select service</option>
+                          <option value="travel">Travel</option>
+                          <option value="accommodation">Accommodation</option>
+                          <option value="travel+accommodation">Travel+Accommodation</option>
+                        </select>
+                    </div>
+                    <div class="enquire-input-container">
+                        <label for="admitcard">Upload Admit Card<span>*</span></label>
+                        <input type="file">
+                    </div>
+                    <div class="submit-btn-container ">
+                      <button class="btn btn-primary">Submit</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+          </div>
+          <!--Book now popup end-->
     </div>
     <!-- End Home Slider Section -->
     <!-- Start Services Section -->
@@ -250,7 +360,7 @@
                 We partnered with a network of trusted hotels and accomadations to offer students during their exam days.
               </p>
               <div class="services-btn">
-                <a href="single-services.html" class="services-btn-one"
+                <a href="accomadation.html" class="services-btn-one"
                   >Read More</a
                 >
               </div>
@@ -267,7 +377,7 @@
 				
               </p>
               <div class="services-btn">
-                <a href="single-services.html" class="services-btn-one"
+                <a href="travel.html" class="services-btn-one"
                   >Read More</a
                 >
 				
@@ -284,7 +394,7 @@
                 Combine convenience ad cost effectiveness with ExamSafari's integrated transport and accomadation Packages.
               </p>
               <div class="services-btn">
-                <a href="single-services.html" class="services-btn-one"
+                <a href="trave_accomadation.html" class="services-btn-one"
                   >Read More</a
                 >
               </div>
@@ -342,7 +452,7 @@
           <div class="col-lg-4 col-md-6">
             <div class="whychoose-single-item">
               <div class="whychoose-icon-box">
-                <img src="assets/img/icon/icon-1.svg" alt="svg icon" />
+                <img src="assets/img/icon/reliable accommodation.png" style="width: 80px;" alt="svg icon" />
               </div>
               <div class="whychoose-info">
                 <h3>Reliable Accommodation</h3>
@@ -355,7 +465,7 @@
           <div class="col-lg-4 col-md-6">
             <div class="whychoose-single-item">
               <div class="whychoose-icon-box">
-                <img src="assets/img/icon/icon-2.svg" alt="svg icon" />
+                <img src="assets/img/icon/safe transport.png" style="width: 80px;" alt="svg icon" />
               </div>
               <div class="whychoose-info">
                 <h3>Safe Transport</h3>
@@ -368,7 +478,7 @@
           <div class="col-lg-4 col-md-6">
             <div class="whychoose-single-item">
               <div class="whychoose-icon-box">
-                <img src="assets/img/icon/icon-3.svg" alt="svg icon" />
+                <img src="assets/img/icon/competitive pricing.png" style="width: 80px;" alt="svg icon" />
               </div>
               <div class="whychoose-info">
                 <h3>Competitive Pricing</h3>
@@ -381,7 +491,7 @@
           <div class="col-lg-4 col-md-6">
             <div class="whychoose-single-item">
               <div class="whychoose-icon-box">
-                <img src="assets/img/icon/icon-4.svg" alt="svg icon" />
+                <img src="assets/img/icon/dedicated support.png" style="width: 80px;" alt="svg icon" />
               </div>
               <div class="whychoose-info">
                 <h3>Dedicated Support</h3>
@@ -394,7 +504,7 @@
           <div class="col-lg-4 col-md-6">
             <div class="whychoose-single-item">
               <div class="whychoose-icon-box">
-                <img src="assets/img/icon/icon-5.svg" alt="svg icon" />
+                <img src="assets/img/icon/quality fooding.png" style="width: 80px;" alt="svg icon" />
               </div>
               <div class="whychoose-info">
                 <h3>Quality Fooding</h3>
@@ -407,7 +517,7 @@
           <div class="col-lg-4 col-md-6">
             <div class="whychoose-single-item">
               <div class="whychoose-icon-box">
-                <img src="assets/img/icon/icon-6.svg" alt="svg icon" />
+                <img src="assets/img/icon/positive feedback.png" style="width: 80px;" alt="svg icon" />
               </div>
               <div class="whychoose-info">
                 <h3>Positive Feedback</h3>
@@ -493,14 +603,14 @@
 							<div class="project-flip-box">
 								<div class="project-flip-content">
 									<div class="project-flip-box-front text-center">
-										<img src="assets/img/projects/projects-1.jpg" alt="project image">
+										<img src="assets/img/cities/kanpur 3.jpg" alt="project image">
 										
 									</div>
 									  <div class="project-flip-box-back text-center">
-										<img src="assets/img/projects/projects-3.jpg" alt="project image">
+										<img src="assets/img/cities/kanpur.jpg" alt="project image">
 										<div class="inner">
 										 
-										  <button class="btn-primary flip-box-button">View Project</button>
+										  <button class="btn-primary flip-box-button">kanpur</button>
 										</div>
 									  </div>
 								</div>
@@ -511,16 +621,16 @@
 							<div class="project-flip-box">
 								<div class="project-flip-content">
 									<div class="project-flip-box-front text-center">
-										<img src="assets/img/projects/projects-2.jpg" alt="project image">
+										<img src="assets/img/cities/lucknow 2.jpeg" alt="project image">
 										<div class="inner">
 										 
 										</div>
 									</div>
 									  <div class="project-flip-box-back text-center">
-										<img src="assets/img/projects/projects-5.jpg" alt="project image">
+										<img src="assets/img/cities/lucknow.jpg" alt="project image">
 										<div class="inner">
 										  
-										  <button class="btn-primary flip-box-button">View Project</button>
+										  <button class="btn-primary flip-box-button">Lucknow</button>
 										</div>
 									  </div>
 								</div>
@@ -531,14 +641,14 @@
 							<div class="project-flip-box">
 								<div class="project-flip-content">
 									<div class="project-flip-box-front text-center">
-										<img src="assets/img/projects/projects-3.jpg" alt="project image">
+										<img src="assets/img/cities/prayagraj 2.jpg" alt="project image">
 										
 									</div>
 									  <div class="project-flip-box-back text-center">
-										<img src="assets/img/projects/projects-3.jpg" alt="project image">
+										<img src="assets/img/cities/prayagraj.jpg" alt="project image">
 										<div class="inner">
 										  
-										  <button class="btn-primary flip-box-button">View Project</button>
+										  <button class="btn-primary flip-box-button">Prayagraj</button>
 										</div>
 									  </div>
 								</div>
@@ -694,7 +804,7 @@
           <div class="col-lg-4 col-md-6 footer-box-item">
             <div class="footer-about footer-list">
               <a class="footer-logo" href="#">
-                <img src="assets/img/logo.png" class="white-logo" alt="logo" />
+                <img src="assets/img/footer_logo-removebg-preview.png" class="white-logo" alt="logo" />
               </a>
               <p>
                 Ease Your Exam Journey with ExamSafari: Affordable Accommodations, Seamless Transport, and Reliable Support!
@@ -831,5 +941,7 @@
     <script src="assets/js/wow.min.js"></script>
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
+    
+    <script src="assets/js/login.js"></script>
   </body>
 </html>

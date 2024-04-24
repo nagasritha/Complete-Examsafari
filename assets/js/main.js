@@ -255,6 +255,29 @@
         $(".close-btn").addClass("active");
     });
 
+    // Sign up Popup JS
+
+  $(document).ready(function () {
+    $(".close-signup").on("click", function () {
+      $(".signup-popup-container").fadeOut();
+    });
+
+    $(".open-signup").on("click", function () {
+      $(".signup-popup-container").fadeIn();
+    });
+  });
+
+  //booknow popup
+
+  $(document).ready(function () {
+    $(".close-booknow").on("click", function () {
+      $(".book-now-popup-container").fadeOut();
+    });
+    $(".open-book-now-popup").on("click", function () {
+      $(".book-now-popup-container").fadeIn();
+    });
+  });
+
 	// Progress bar
 	$(window).on('scroll', function () {
 		$(".skill-progress .progres").each(function () {

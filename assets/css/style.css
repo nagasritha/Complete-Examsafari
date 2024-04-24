@@ -1114,6 +1114,261 @@ p:last-child {
 .search-overlay.search-popup .search-form .search-button i {
 	font-size: 16px;
 }
+/**************************************
+ ** - 02.1 - sign up popup CSS
+ **************************************/
+
+ .signup-popup-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+  
+	height: 100vh;
+	display: none; /* Initially hide the popup */
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+	z-index: 9999; /* Ensure popup is above other content */
+  }
+  
+  .signup-popup-card {
+	background-color: #ffffff; /* Background color of the card */
+	padding: 20px;
+	border-radius: 8px; /* Rounded corners */
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Shadow for the card */
+	/* Center the card */
+	position: absolute;
+  
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  }
+  @media (max-width: 767px) {
+  
+   .signup-popup-container {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 100vw;
+	  
+	  height: 100vh;
+	  display: none; /* Initially hide the popup */
+	  justify-content: center;
+	  align-items: center;
+	  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+	  z-index: 9999; /* Ensure popup is above other content */
+  
+	}
+  }
+  @media (min-width: 768px) {
+	.signup-popup-card {
+  
+	  background-color: #ffffff; /* Background color of the card */
+	  padding: 20px;
+	  border-radius: 8px; /* Rounded corners */
+	  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Shadow for the card */
+	  /* Center the card */
+	  position: absolute;
+	  min-width:250px;
+	  max-width:500px;
+	  top: 50%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+  
+	}
+  }
+  
+  .margin-right {
+	text-align: right;
+  }
+  
+  .signup-input-email-field {
+	border: 1px solid #464646;
+  }
+  
+  /* OTP Container */
+  .otp-container {
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+  }
+  
+  /* OTP Box */
+  .otp-input {
+	width: 35px;
+	height: 35px;
+	margin: 0 5px;
+	border: 1px solid #ccc;
+	text-align: center;
+	font-size: 20px;
+	border-radius: 5px;
+  }
+  
+  /* OTP Box focus */
+  .otp-input:focus {
+	outline: none;
+	border-color: #007bff;
+  }
+  
+  /* OTP Box input style */
+  .otp-input input {
+	width: 100%;
+	height: 100%;
+	border: none;
+	background: none;
+	text-align: center;
+	font-size: 20px;
+  }
+  
+  /* OTP Box error style */
+  .otp-input.error {
+	border-color: #ff0000;
+  }
+  /*book now popup*/
+  .book-now-popup-container {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	background-color: rgba(0, 0, 0, 0.5);
+  }
+  .book-now-popup-container .book-now-popup-card {
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 160px;
+	height: 80%;
+	padding: 15px;
+	overflow-y: scroll;
+	width: 700px;
+	animation: shake 0.2s cubic-bezier(0.5 0.05, 1, 0.5) !important;
+	animation: alternate !important;
+	animation-iteration-count: 3 !important;
+	animation-fill-mode: forwards !important;
+	transform: translate3d(0px, -50px, 0px) !important;
+  }
+  @keyframes shake {
+	from {
+	  transform: translate3d(0px, -50px, 0px);
+	}
+	to {
+	  transform: translate3d(0px, 0px, 0px);
+	}
+  }
+  @media (max-width: 767px) {
+	.book-now-popup-container .book-now-popup-card {
+	  width: 85%;
+	}
+  
+  }
+  @media (min-width: 768px) {
+	.book-now-popup-card .submit-btn-container button {
+	  width: 100%;
+	  border-radius: 30px;
+	}
+  }
+  .book-now-popup-card .container,
+  .book-now-popup-card form {
+	width: 100%;
+  }
+  .book-now-popup-card .enquire-input-container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin-bottom: 15px;
+  }
+  .book-now-popup-card form label {
+	font-weight: 700;
+	font-size: 15px;
+  }
+  .book-now-popup-card form label span {
+	color: red;
+	font-size: 15px;
+  }
+  .book-now-popup-card form input,
+  .book-now-popup-card form select,
+  .book-now-popup-card form textarea {
+	display: block;
+	width: 100%;
+	height: 50px;
+	line-height: initial;
+	border: 1px solid #e0e0e0;
+	color: #02162e;
+	outline: 0;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+	padding-top: 4px;
+	padding-left: 10px;
+	border-radius: 8px;
+  }
+  .book-now-popup-card .submit-btn-container {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+  }
+  
+  /*end book now popup*/
+  
+  
+	.signup-input-email-field{
+	  border:1px solid #464646;
+	}
+  
+	/* OTP Container */
+  .otp-container {
+	  display: flex;
+	  align-items: center;
+	  margin-bottom:5px;
+	}
+	
+	/* OTP Box */
+	.otp-input {
+	  width: 35px;
+	  height: 35px;
+	  margin: 0 5px;
+	  border: 1px solid #ccc;
+	  text-align: center;
+	  font-size: 20px;
+	  border-radius: 5px;
+	}
+	
+	/* OTP Box focus */
+	.otp-input:focus {
+	  outline: none;
+	  border-color: #007bff;
+	}
+	
+	/* OTP Box input style */
+	.otp-input input {
+	  width: 100%;
+	  height: 100%;
+	  border: none;
+	  background: none;
+	  text-align: center;
+	  font-size: 20px;
+	}
+	
+	/* OTP Box error style */
+	.otp-input.error {
+	  border-color: #ff0000;
+	}
+  
+	#resendOtp{
+	  font-weight:bold;
+	  background-color:transparent;
+	  border-width:0px;
+	  margin-top:3px;
+	}
+	
 
 /**************************************
  ** - 03 - All Home Section CSS
@@ -1556,13 +1811,13 @@ p:last-child {
 }
 
 .single-services-box-img-1:before {
-    background: url(../img/services/services-1.jpg);
+    background: url(../img/services/accommodation.png);
 }
 .single-services-box-img-2:before {
-    background: url(../img/services/services-2.jpg);
+    background: url(../img/services/travel1.png);
 }
 .single-services-box-img-3:before {
-    background: url(../img/services/services-3.jpg);
+    background: url(../img/services/travel+acco.png);
 }
 .single-services-box-img-4:before {
     background: url(../img/services/services-4.jpg);
