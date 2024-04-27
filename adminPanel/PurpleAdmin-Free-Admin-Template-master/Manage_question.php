@@ -4,7 +4,7 @@ session_start();
 
 // Fetch data from the services table
 
-$services = mysqli_query($conn,"SELECT * from services");
+$faqs = mysqli_query($conn,"SELECT * from faqs");
 
 ?>
 <!DOCTYPE html>
@@ -357,6 +357,7 @@ $services = mysqli_query($conn,"SELECT * from services");
                 </ul>
               </div>
             </li>
+            
 
             <li class="nav-item">
               <a
@@ -521,23 +522,23 @@ $services = mysqli_query($conn,"SELECT * from services");
             <div class="row">
              
               <?php
-              foreach($services as $service) :
+              foreach($faqs as $faq) :
                 ?>
               <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <div class="row">
                     <div class="col-sm-8">
-                    <h3 class="card-title">Service <span id=""><?php echo $service['id'] ?></span></h3>
+                    <h3 class="card-title">Question <span id=""><?php echo $faq['id'] ?></span></h3>
                     </div>
                     <div class="col-sm-4">
-                    <button class="card-title edit-btn bg-transparent border-0" data-service-id="<?php echo $service['id']?>">
+                    <button class="card-title edit-btn bg-transparent border-0" data-service-id="<?php echo $faq['id']?>">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                         <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
                       </svg>
                     </button>
-                    <button class="card-title delete-btn bg-transparent border-0" data-service-id="<?php echo $service['id']?>">
+                    <button class="card-title faqDelete-btn bg-transparent border-0" data-service-id="<?php echo $faq['id']?>">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
                         <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
@@ -547,27 +548,13 @@ $services = mysqli_query($conn,"SELECT * from services");
                     </div>
                     <hr>
                     <div class="row">
-                      <div class="col-md-6">
-                       <b>Title:</b>
+                      <div class="col-12">
+                       <b><?php echo $faq["question"]?></b>
                       </div>
-                      <div class="col-md-6">
-                        <p><?php echo $service['title']?></p>
-                     </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-6">
-                       <b>Description:</b>
-                      </div>
-                      <div class="col-md-6">
-                        <p><?php echo $service['description']?></p>
-                     </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                       <b>Icon:</b>
-                      </div>
-                      <div class="col-md-6">
-                        <p><?php echo $service['icon']?></p>
+                    <div class="col-12">
+                        <p><?php echo $faq['answer']?></p>
                      </div>
                     </div>
                   </div>
@@ -580,51 +567,41 @@ $services = mysqli_query($conn,"SELECT * from services");
               <div class="signup-popup-container" id="service-Edit-card">
                 <div class="signup-popup-card">
                 <div class="row">   
-                <h4 class="card-title col-10">Edit Service</h4>
+                <h4 class="card-title col-10">Edit FAQ</h4>
                 <button id="close-service-Edit-card" class="border-0 bg-transparent col-2"><svg style="font-size:20px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                   <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
                 </svg>
                 </button>
                 </div>
                 <hr/>
-                <form class="form-sample" id="editServiceForm">
+                <form class="form-sample" id="editQuestionForm">
                     <div class="row mt-5">
-                      <div class="col-12">
+                      <div class="col-xl-6">
                         <div class="form-group row">
-                          <label class="col-12 col-form-label font-weight-bold" for="title" style="font-size:20px"
-                            >Service Title</label
+                          <label class="col-sm-3 col-form-label" for="question"
+                            >Question</label
                           >
-                          <div class="col-12">
-                            <input type="text" class="form-control" name="title" id="title" required/>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="question" id="question" required/>
                           </div>
                         </div>
                       </div>
-                      <div class="col-12">
+                      <div class="col-xl-6">
                         <div class="form-group row">
-                          <label class="col-12 col-form-label font-weight-bold" style="font-size:20px" for="description"
-                            >Service Description</label
+                          <label class="col-sm-3 col-form-label" for="answer"
+                            >Answer</label
                           >
-                          <div class="col-12">
-                            <input type="textarea" rows='100' col='100' class="form-control" name="description" id="description" required />
+                          <div class="col-sm-9">
+                            <input type="textarea" rows='100' col='100' class="form-control" name="answer" id="answer" required />
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="form-group row">
-                          <label class="col-12 col-form-label font-weight-bold" style="font-size:20px" for="icon">Service Icon</label>
-                          <div class="col-12">
-                            <input type="text" class="form-control" name="icon" id="icon" required/>
-                          </div>
-                        </div>
-                      </div>
-                    </div> 
-                    <div class="form-group row text-center">
+                    <div class="form-group row text-center ">
                         <button
                         type="submit"
                         class="btn btn-gradient-primary mb-2"
-                        style="width:200px;margin-left:20px;"
+                        style="width:200px; margin-left:20px;"
                       >
                         Submit
                       </button>
