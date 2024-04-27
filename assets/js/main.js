@@ -306,10 +306,10 @@
         }
     });
 	// START PRELOADED
-    $(window).on('load', function() {
+    /*$(window).on('load', function() {
         $('.techSoft-preloader').fadeOut();
         $('.techSoft-preloader').delay(350).fadeOut('slow');
-    });
+    });*/
 	
 	/*START CONTACT MAP JS*/
 	if($('.map-canvas').length) {

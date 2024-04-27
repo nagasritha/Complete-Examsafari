@@ -1,3 +1,12 @@
+<?php
+require_once("../../assets/php/connection.php");
+session_start();
+
+// Fetch data from the services table
+
+$services = mysqli_query($conn,"SELECT * from services");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,6 +22,7 @@
       rel="stylesheet"
       href="assets/vendors/mdi/css/materialdesignicons.min.css"
     />
+    <link rel="stylesheet" href="../../assets/css/style.css"/>
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
 
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -340,7 +350,7 @@
                     <a class="nav-link" href="add_service.html">Add Services</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="manage_services.html"
+                    <a class="nav-link" href="manage_services.php"
                       >Manage Services</a
                     >
                   </li>
@@ -485,215 +495,110 @@
             
             <div class="row">
              
+              <?php
+              foreach($services as $service) :
+                ?>
+              <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                    <div class="col-sm-8">
+                    <h3 class="card-title">Service <span id=""><?php echo $service['id'] ?></span></h3>
+                    </div>
+                    <div class="col-sm-4">
+                    <button class="card-title edit-btn" data-service-id="<?php echo $service['id']?>">Edit</button>
+                    </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6">
+                       <b>Title:</b>
+                      </div>
+                      <div class="col-md-6">
+                        <p><?php echo $service['title']?></p>
+                     </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                       <b>Description:</b>
+                      </div>
+                      <div class="col-md-6">
+                        <p><?php echo $service['description']?></p>
+                     </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                       <b>Icon:</b>
+                      </div>
+                      <div class="col-md-6">
+                        <p><?php echo $service['icon']?></p>
+                     </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <?php
+              endforeach;
+              ?>
               
-              <div class="col-md-4 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row">
-                    <div class="col-md-8">
-                    <h3 class="card-title">Agriculture</h3>
-                    </div>
-                    <div class="col-md-4">
-                    <h6 class="card-title">Edit</h6>
-                    </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <p>Locations</p>
-                        <p>Rate/acre</p>
-                        <p>Drones</p>
-                        <p>Started on</p>
-                        <p>Status</p>
-                        <p>Crop</p>
+              <div class="signup-popup-container" id="service-Edit-card">
+                <div class="signup-popup-card">
+                <div class="row">   
+                <h4 class="card-title col-10">Add New Service</h4>
+                <button id="close-service-Edit-card" class="border-0 bg-transparent col-2"><svg style="font-size:20px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                </svg>
+                </button>
+                </div>
+                <hr/>
+                <form class="form-sample" id="editServiceForm">
+                    <div class="row mt-5">
+                      <div class="col-12">
+                        <div class="form-group row">
+                          <label class="col-12 col-form-label font-weight-bold" for="title" style="font-size:20px"
+                            >Service Title</label
+                          >
+                          <div class="col-12">
+                            <input type="text" class="form-control" name="title" id="title" required/>
+                          </div>
+                        </div>
                       </div>
-                      <div class="col-md-6">
-                        <p>4</p>
-                        <p>200</p>
-                        
-                        <p>4</p>
-                        <p>21/10/2024</p>
-                        <p>Active</p>
-                        <p>Wheat</p>
+                      <div class="col-12">
+                        <div class="form-group row">
+                          <label class="col-12 col-form-label font-weight-bold" style="font-size:20px" for="description"
+                            >Service Description</label
+                          >
+                          <div class="col-12">
+                            <input type="textarea" rows='100' col='100' class="form-control" name="description" id="description" required />
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group row">
+                          <label class="col-12 col-form-label font-weight-bold" style="font-size:20px" for="icon">Service Icon</label>
+                          <div class="col-12">
+                            <input type="text" class="form-control" name="icon" id="icon" required/>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+                    <div class="form-group row text-center">
+                        <button
+                        type="submit"
+                        class="btn btn-gradient-primary mb-2"
+                        style="width:200px;margin-left:20px;"
+                      >
+                        Submit
+                      </button>
+                   
+                    </div>
+                  </form>
+                  <h3><b id="result"></b></h3>
                 </div>
               </div>
-               <div class="col-md-4 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row">
-                    <div class="col-md-8">
-                    <h3 class="card-title">Agriculture</h3>
-                    </div>
-                    <div class="col-md-4">
-                    <h6 class="card-title">Edit</h6>
-                    </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <p>Locations</p>
-                        <p>Rate/acre</p>
-                        <p>Drones</p>
-                        <p>Started on</p>
-                        <p>Status</p>
-                        <p>Crop</p>
-                      </div>
-                      <div class="col-md-6">
-                        <p>4</p>
-                        <p>200</p>
-                        
-                        <p>4</p>
-                        <p>21/10/2024</p>
-                        <p>Active</p>
-                        <p>Wheat</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-               <div class="col-md-4 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row">
-                    <div class="col-md-8">
-                    <h3 class="card-title">Agriculture</h3>
-                    </div>
-                    <div class="col-md-4">
-                    <h6 class="card-title">Edit</h6>
-                    </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <p>Locations</p>
-                        <p>Rate/acre</p>
-                        <p>Drones</p>
-                        <p>Started on</p>
-                        <p>Status</p>
-                        <p>Crop</p>
-                      </div>
-                      <div class="col-md-6">
-                        <p>4</p>
-                        <p>200</p>
-                        
-                        <p>4</p>
-                        <p>21/10/2024</p>
-                        <p>Active</p>
-                        <p>Wheat</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-             
-              
-              <div class="col-md-4 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row">
-                    <div class="col-md-8">
-                    <h3 class="card-title">Agriculture</h3>
-                    </div>
-                    <div class="col-md-4">
-                    <h6 class="card-title">Edit</h6>
-                    </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <p>Locations</p>
-                        <p>Rate/acre</p>
-                        <p>Drones</p>
-                        <p>Started on</p>
-                        <p>Status</p>
-                        <p>Crop</p>
-                      </div>
-                      <div class="col-md-6">
-                        <p>4</p>
-                        <p>200</p>
-                        
-                        <p>4</p>
-                        <p>21/10/2024</p>
-                        <p>Active</p>
-                        <p>Wheat</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-               <div class="col-md-4 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row">
-                    <div class="col-md-8">
-                    <h3 class="card-title">Agriculture</h3>
-                    </div>
-                    <div class="col-md-4">
-                    <h6 class="card-title">Edit</h6>
-                    </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <p>Locations</p>
-                        <p>Rate/acre</p>
-                        <p>Drones</p>
-                        <p>Started on</p>
-                        <p>Status</p>
-                        <p>Crop</p>
-                      </div>
-                      <div class="col-md-6">
-                        <p>4</p>
-                        <p>200</p>
-                        
-                        <p>4</p>
-                        <p>21/10/2024</p>
-                        <p>Active</p>
-                        <p>Wheat</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-               <div class="col-md-4 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row">
-                    <div class="col-md-8">
-                    <h3 class="card-title">Agriculture</h3>
-                    </div>
-                    <div class="col-md-4">
-                    <h6 class="card-title">Edit</h6>
-                    </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <p>Locations</p>
-                        <p>Rate/acre</p>
-                        <p>Drones</p>
-                        <p>Started on</p>
-                        <p>Status</p>
-                        <p>Crop</p>
-                      </div>
-                      <div class="col-md-6">
-                        <p>4</p>
-                        <p>200</p>
-                        
-                        <p>4</p>
-                        <p>21/10/2024</p>
-                        <p>Active</p>
-                        <p>Wheat</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+               
             </div>
           </div>
           </div>
@@ -723,5 +628,6 @@
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/todolist.js"></script>
     <!-- End custom js for this page -->
+    <script src="../../assets/js/admin.js"></script>
   </body>
 </html>

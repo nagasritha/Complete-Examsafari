@@ -1317,8 +1317,13 @@ p:last-child {
   }
   
   /*end book now popup*/
+  /**********admin panel************/
+  .service-edit-cancel-button{
+	background-color: transparent;
+	border-width: 0px;
+  }
   
-  
+   /**********end of admin panel************/
 	.signup-input-email-field{
 	  border:1px solid #464646;
 	}

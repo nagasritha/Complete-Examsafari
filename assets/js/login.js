@@ -1,3 +1,21 @@
+function showPreloader() {
+    document.getElementById("techSoft-preloader").style.display = "block";
+  }
+  
+  // Function to hide the preloader element
+  function hidePreloader() {
+    document.getElementById("techSoft-preloader").style.display = "none";
+  }
+  showPreloader();
+  // Show preloader when the page loads
+  window.addEventListener("load", function() {
+    
+    
+    // Hide the preloader after 3 seconds (adjust as needed)
+    setTimeout(function(){
+        hidePreloader()}, 3000); // 3000 milliseconds = 3 seconds
+  });
+
 document.querySelectorAll(".otp-input").forEach(function (input, index) {
   input.addEventListener("keyup", function (e) {
       const currentInput = input,
@@ -38,6 +56,8 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     sendOtp(globalFormData);
 });
 function sendOtp() {
+    showPreloader();
+    document.getElementById("techSoft-preloader").style.display = "flex";
   console.log("I am called again");
     fetch('./assets/php/login.php', {
             method: 'POST',
@@ -51,6 +71,7 @@ function sendOtp() {
         })
         .then(data => {
             // Handle successful response
+            hidePreloader();
             console.log(data);
             if (data.success) {
                 console.log("OTP sent successfully");
