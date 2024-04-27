@@ -12,15 +12,31 @@ if (addServiceForm) {
 // Edit Service Form
 const editButtons = document.querySelectorAll(".edit-btn");
 const editServiceForm = document.getElementById('editServiceForm');
+
 let card = document.getElementById("service-Edit-card");
 let cancelCard = document.getElementById("close-service-Edit-card");
 let id;
+
+const deleteButtons = document.querySelectorAll(".delete-btn"); 
 
 if (editButtons) {
     editButtons.forEach(function(button) {
         button.addEventListener("click", function() {
             id = this.getAttribute("data-service-id");
             card.style.display = "flex";
+            console.log(id);
+        });
+    });
+}
+
+if (deleteButtons) {
+    deleteButtons.forEach(function(button) {
+        button.addEventListener("click", function() {
+            id = this.getAttribute("data-service-id");
+            let formData = new FormData();
+            formData.append("action","DELETION");
+            formData.append("id",id);
+            pushData(formData);
             console.log(id);
         });
     });
@@ -64,7 +80,14 @@ function pushData(formData) {
         }
     })
     .then(data => {
+        if(result){
         result.textContent = data.message;
+        }
+        if(data.message == "Service Deleted"){
+        
+        location.reload();
+        }
+        console.log(result);
     })
     .catch(error => {
         console.error('There was a problem with the fetch operation:', error);

@@ -1323,6 +1323,10 @@ p:last-child {
 	border-width: 0px;
   }
   
+  .edit-btn,.delete-btn{
+	background-color: transparent !important;
+	border-width: 0px !important;
+  }
    /**********end of admin panel************/
 	.signup-input-email-field{
 	  border:1px solid #464646;

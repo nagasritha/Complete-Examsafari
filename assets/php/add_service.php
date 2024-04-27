@@ -62,7 +62,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             returnError('Error updating service');
         }
+    }else if ($_POST["action"] === "DELETION") {
+        // Check if the "id" parameter exists in the POST data
+        if (isset($_POST["id"])) {
+            $id = $_POST["id"];
+            // Prepare the SQL query to delete the record with the given ID
+            $query = "DELETE FROM services WHERE id = ?";
+            $stmt = $conn->prepare($query);
+            // Bind the parameter
+            $stmt->bind_param("i", $id);
+            // Execute the query
+            if ($stmt->execute()) {
+                // If deletion is successful, return success message
+                returnSuccess("Service Deleted");
+            } else {
+                // If deletion fails, return error message
+                returnError("Failed To Delete The Service");
+            }
+        } else {
+            // If "id" parameter is not provided, return error message
+            returnError("ID parameter is missing");
+        }
+    } else {
+        // If action is not "DELETION", return error message
+        returnError("Invalid action");
     }
+
 }
 
 
