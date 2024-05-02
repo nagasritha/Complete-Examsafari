@@ -368,9 +368,6 @@ $cities = mysqli_query($conn,"SELECT * from examCities");
               <div class="collapse" id="homeContent">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="add_home.html"> Add Home Content</a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link" href="manage_home.php"
                       >Manage Home Content</a>
                   </li>
@@ -490,11 +487,11 @@ $cities = mysqli_query($conn,"SELECT * from examCities");
               <div class="collapse" id="bookingProcess">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="add_booking_process.html">Add Booking</a>
+                    <a class="nav-link" href="add_booking_process.html">Add Trust</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="manage_booking_process.php"
-                      >Manage Booking</a
+                      >Manage Trust</a
                     >
                   </li>
                 </ul>
@@ -572,7 +569,6 @@ $cities = mysqli_query($conn,"SELECT * from examCities");
                 </ul>
               </div>
             </li>
-
             <li class="nav-item">
               <a
                 class="nav-link"
@@ -596,84 +592,7 @@ $cities = mysqli_query($conn,"SELECT * from examCities");
               </div>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="manage_requests.html">
-                <span class="menu-title">View Requests</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#pilots"
-                aria-expanded="false"
-                aria-controls="pilots"
-              >
-                <span class="menu-title">Pilots</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="pilots">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_pilot.html">Add Pilots</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_pilot.html"
-                      >Manage Pilots</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="my_revenue.html">
-                <span class="menu-title">Revenue</span>
-                <i class="mdi mdi-chart-bar menu-icon"></i>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#drones"
-                aria-expanded="false"
-                aria-controls="drones"
-              >
-                <span class="menu-title">Drones</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="drones">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_drone.html">Add Drone</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_drone.html"
-                      >Manage Drone</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="manage_customers.html">
-                <span class="menu-title">Manage Customers</span>
-                <i class="mdi mdi-table-large menu-icon"></i>
-              </a>
-            </li>
-
-            <li class="nav-item sidebar-actions">
-              <span class="nav-link">
-                <button class="btn btn-block btn-lg btn-gradient-primary mt-4">
-                  Logout
-                </button>
-              </span>
-            </li>
+           
           </ul>
         </nav>
         <!-- partial -->
@@ -694,13 +613,13 @@ $cities = mysqli_query($conn,"SELECT * from examCities");
                     <h3 class="card-title">City <span id=""><?php echo $city['id'] ?></span></h3>
                     </div>
                     <div class="col-sm-4">
-                    <button class="card-title edit-btn bg-transparent border-0" data-service-id="<?php echo $trust['id']?>">
+                    <button class="card-title edit-btn bg-transparent border-0" data-service-id="<?php echo $city['id']?>">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                         <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
                       </svg>
                     </button>
-                    <button class="card-title cityDelete-btn bg-transparent border-0" data-service-id="<?php echo $trust['id']?>">
+                    <button class="card-title cityDelete-btn bg-transparent border-0" data-service-id="<?php echo $city['id']?>">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
                         <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>

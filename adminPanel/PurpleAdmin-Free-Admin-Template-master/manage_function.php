@@ -4,11 +4,9 @@ session_start();
 
 // Fetch data from the services table
 
-$home_page_result = mysqli_query($conn,"SELECT * from home_page");
-$home_page = mysqli_fetch_assoc($home_page_result);
+$functions = mysqli_query($conn,"SELECT * from functionscount");
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,6 +22,7 @@ $home_page = mysqli_fetch_assoc($home_page_result);
       rel="stylesheet"
       href="assets/vendors/mdi/css/materialdesignicons.min.css"
     />
+    <link rel="stylesheet" href="../../assets/css/style.css"/>
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
 
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -599,182 +598,93 @@ $home_page = mysqli_fetch_assoc($home_page_result);
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Home Content</h4>
-                  <form class="form-sample" id="addHomeContentForm">
+
+            
+            <div class="row">
+             
+              <?php
+              foreach($functions as $function) :
+                ?>
+              <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                    <div class="col-sm-8">
+                    <h3 class="card-title">Trust <span id=""><?php echo $function['id'] ?></span></h3>
+                    </div>
+                    <div class="col-sm-4">
+                    <button class="card-title edit-btn bg-transparent border-0" data-service-id="<?php echo $function['id']?>">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                      </svg>
+                    </button>
+                    <button class="card-title functionDelete-btn bg-transparent border-0" data-service-id="<?php echo $function['id']?>">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                      </svg>
+                    </button>
+                    </div>
+                    </div>
+                    <hr>
+                    <div class="row mt-2">
+                      <div class="col-md-6">
+                        <b>Title:</b>
+                        </div>
+                        <div class="col-md-6">
+                          <p><?php echo $function['title']?></p>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-md-6">
+                       <b>Description:</b>
+                      </div>
+                      <div class="col-md-6">
+                        <p><?php echo $function['count']?></p>
+                     </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <?php
+              endforeach;
+              ?>
+              
+              <div class="signup-popup-container" id="service-Edit-card">
+                <div class="signup-popup-card">
+                <div class="row">   
+                <h4 class="card-title col-10">Edit Booking</h4>
+                <button id="close-service-Edit-card" class="border-0 bg-transparent col-2"><svg style="font-size:20px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                </svg>
+                </button>
+                </div>
+                <hr/>
+                <form class="form-sample" id="editfunctionForm">
                     <div class="row mt-5">
                       <div class="col-xl-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="logo"
-                            >
-                            <div class="row">
-                            <div class="col-12">
-                            <img src="../../assets/php/Images/<?php echo $home_page["logo"]?>" style="margin-top:-30px;" width="100"/>
-                            <p>Logo</p>
-                            </div>
-                            </div>
-                            </label
+                          <label class="col-sm-3 col-form-label" for="count"
+                            >Count</label
                           >
                           <div class="col-sm-9">
-                            
-                            <input type="file" class="form-control" name="logo" id="logo" accept=".jpg, .jpeg, .png" value="">
+                            <input type="text" class="form-control" name="count" id="count" required/>
                           </div>
                         </div>
                       </div>
                       <div class="col-xl-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="service_qt"
-                            >service Question</label
+                          <label class="col-sm-3 col-form-label" for="title"
+                            >Function Title</label
                           >
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" name="service_qt" id="service_qt" required value="<?php echo $home_page["service_qt"]?>"/>
+                            <input type="text" class="form-control" name="title" id="title" required/>
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="service_hd"
-                            >Service Heading</label
-                          >
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" name="service_hd" id="service_hd" required value="<?php echo $home_page["service_hd"]?>"/>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-6">
-                    <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="about_qt"
-                            >About Question</label
-                          >
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" name="about_qt" id="about_qt" required value="<?php echo $home_page["about_qt"]?>"/>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="about_hd"
-                            >About Heading</label
-                          >
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" name="about_hd" id="about_hd" required value="<?php echo $home_page["about_hd"]?>"/>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="about_content"
-                            >About Content</label
-                          >
-                          <div class="col-sm-9">
-                            <textarea rows="20" cols="50" class="form-control" name="about_content" id="about_content" required ><?php echo $home_page["about_content"]?></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="about_comment"
-                            >About Comment</label
-                          >
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" name="about_comment" id="about_comment" required value="<?php echo $home_page["about_comment"]?>"/>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-6">
-                    <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="trust_qt"
-                            >Trust Question</label
-                          >
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" name="trust_qt" id="trust_qt" required value="<?php echo $home_page["trust_qt"]?>"/>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="trust_hd"
-                            >Trust Heading</label
-                          >
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" name="trust_hd" id="trust_hd" required value="<?php echo $home_page["trust_hd"]?>"/>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-6">
-                        <div class="form-group row">
-                              <label class="col-sm-3 col-form-label" for="booking_ht1"
-                                >Booking Heading1</label
-                              >
-                              <div class="col-sm-9">
-                                <input type="text" class="form-control" name="booking_ht1" id="booking_ht1" required value="<?php echo $home_page["booking_ht1"]?>"/>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-xl-6">
-                            <div class="form-group row">
-                              <label class="col-sm-3 col-form-label" for="booking_ht2"
-                                >Booking Heading2</label
-                              >
-                              <div class="col-sm-9">
-                                <input type="text" class="form-control" name="booking_ht2" id="booking_ht2" required value="<?php echo $home_page["booking_ht2"]?>"/>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-xl-6">
-                          <div class="form-group row">
-                            <label class="col-sm-3 col-form-label" for="cities_ht1"
-                            >Cities Heading1</label
-                            >
-                            <div class="col-sm-9">
-                            <input type="text" class="form-control" name="cities_ht1" id="cities_ht1" required value="<?php echo $home_page["cities_ht1"]?>"/>
-                            </div>
-                            </div>
-                            </div>
-                            <div class="col-xl-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label" for="cities_ht2"
-                                >Cities Heading2</label
-                                >
-                                <div class="col-sm-9">
-                                <input type="text" class="form-control" name="cities_ht2" id="cities_ht2" required value="<?php echo $home_page["cities_ht2"]?>"/>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col-xl-6">
-                            <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label" for="final_t"
-                                    >Final Text</label
-                                    >
-                                    <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="final_t" id="final_t" required value="<?php echo $home_page["final_t"]?>"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label" for="faq_ht1"
-                                    >FAQ Heading1</label
-                                    >
-                                    <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="faq_ht1" id="faq_ht1" required value="<?php echo $home_page["faq_ht1"]?>"/>
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="col-xl-6">
-                                <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label" for="faq_ht2"
-                                        >FAQ Heading2</label
-                                        >
-                                        <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="faq_ht2" id="faq_ht2" required value="<?php echo $home_page["faq_ht2"]?>"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                  
                     </div>
+                      
                     <div class="form-group row text-center ">
                         <button
                         type="submit"
@@ -786,10 +696,10 @@ $home_page = mysqli_fetch_assoc($home_page_result);
                    
                     </div>
                   </form>
-                  <h4><b id="result" class="text-success"></b></h4>
-                </div>
               </div>
+               
             </div>
+          </div>
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->

@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Use prepared statements to prevent SQL injection
         
     }else if($_POST["action"]==="PUT"){
-        if ( !isset($_POST["title"])) {
+        if ( !isset($_POST["title"]) ) {
             returnError('Missing parameters for updation');
         }
 
@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $newImageName .= ".".$imageExtension;
     
                 move_uploaded_file($tempName, 'Images/' . $newImageName);
-                $update_query = "UPDATE examCities SET title=?, image=? WHERE id=?";
+                $update_query = "UPDATE examcities SET title=?, image=? WHERE id=?";
                 $stmt = $conn->prepare($update_query);
                 $stmt->bind_param("ssi", $title, $newImageName, $id);
                 
@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($stmt->execute()) {
                     returnSuccess('City updated');
                 } else {
-                    returnError('Error updating trust');
+                    returnError('Error updating city');
                 }
 
             }
