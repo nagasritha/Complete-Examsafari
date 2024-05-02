@@ -368,9 +368,6 @@ $bookings = mysqli_query($conn,"SELECT * from bookingdetails");
               <div class="collapse" id="homeContent">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="add_home.html"> Add Home Content</a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link" href="manage_home.php"
                       >Manage Home Content</a>
                   </li>
@@ -490,11 +487,11 @@ $bookings = mysqli_query($conn,"SELECT * from bookingdetails");
               <div class="collapse" id="bookingProcess">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="add_booking_process.html">Add Booking</a>
+                    <a class="nav-link" href="add_booking_process.html">Add Trust</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="manage_booking_process.php"
-                      >Manage Booking</a
+                      >Manage Trust</a
                     >
                   </li>
                 </ul>
@@ -572,7 +569,6 @@ $bookings = mysqli_query($conn,"SELECT * from bookingdetails");
                 </ul>
               </div>
             </li>
-
             <li class="nav-item">
               <a
                 class="nav-link"
@@ -596,84 +592,7 @@ $bookings = mysqli_query($conn,"SELECT * from bookingdetails");
               </div>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="manage_requests.html">
-                <span class="menu-title">View Requests</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#pilots"
-                aria-expanded="false"
-                aria-controls="pilots"
-              >
-                <span class="menu-title">Pilots</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="pilots">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_pilot.html">Add Pilots</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_pilot.html"
-                      >Manage Pilots</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="my_revenue.html">
-                <span class="menu-title">Revenue</span>
-                <i class="mdi mdi-chart-bar menu-icon"></i>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#drones"
-                aria-expanded="false"
-                aria-controls="drones"
-              >
-                <span class="menu-title">Drones</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="drones">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_drone.html">Add Drone</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_drone.html"
-                      >Manage Drone</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="manage_customers.html">
-                <span class="menu-title">Manage Customers</span>
-                <i class="mdi mdi-table-large menu-icon"></i>
-              </a>
-            </li>
-
-            <li class="nav-item sidebar-actions">
-              <span class="nav-link">
-                <button class="btn btn-block btn-lg btn-gradient-primary mt-4">
-                  Logout
-                </button>
-              </span>
-            </li>
+           
           </ul>
         </nav>
         <!-- partial -->

@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $newImageName .= ".".$imageExtension;
     
                 move_uploaded_file($tempName, 'Images/' . $newImageName);
-                $update_query = "UPDATE examCities SET title=?, image=? WHERE id=?";
+                $update_query = "UPDATE examcities SET title=?, image=? WHERE id=?";
                 $stmt = $conn->prepare($update_query);
                 $stmt->bind_param("ssi", $title, $newImageName, $id);
                 

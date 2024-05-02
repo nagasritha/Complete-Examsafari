@@ -16,7 +16,7 @@ if(enquireForm){
             if (!response.ok) {
                 throw new Error("Network issue to fetch the data");
             } else {
-                return response.text();
+                return response.json();
             }
         })
         .then(data => {           

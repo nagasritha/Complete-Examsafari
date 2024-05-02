@@ -33,11 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $diff = $presentDate->diff($exam_date_formatted);
         
         $signedDifference = $diff->format('%R%a');
-        if($signedDifference<=4){
-            echo "true";
-        }else{
-            echo "false";
-        }
         if($signedDifference >= 4){
             if($_FILES["admit_card"]["error"]===4){
                 echo "<script>alert('Image does not exist')</script>";
@@ -82,79 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         // Use prepared statements to prevent SQL injection
         
-    }else if($_POST["action"]==="PUT"){
-        if ( !isset($_POST["title"]) || !isset($_POST["description"]) || !isset($_POST["icon"])) {
-            returnError('Missing parameters for updating service');
-        }
-
-        $id = $_POST["id"];
-        $title = $_POST["title"];
-        $description = $_POST["description"];
-        $icon = $_POST["icon"];
-        if($_FILES["image"]["error"]===4){
-            echo "<script>alert('Image does not exist')</script>";
-        }
-        else{
-            $fileName=$_FILES["image"]["name"];
-            $fileSize = $_FILES["image"]["size"];
-            $tempName = $_FILES["image"]["tmp_name"];
-    
-            $validateImageExtension =['jpg', 'jpeg', 'png'] ;
-            $imageExtension = explode('.',$fileName);
-            $imageExtension = strtolower(end($imageExtension));
-            if(!in_array($imageExtension,$validateImageExtension)){
-                echo "<script>alert(`Invalid File ${imageExtension}`);</script>";
-            }
-            else if($fileSize >1000000){
-                echo "<scritp>alert('image size is too large');</scritp>";
-            }
-            else{
-                $newImageName = uniqid();
-                $newImageName .= ".".$imageExtension;
-    
-                move_uploaded_file($tempName, 'Images/' . $newImageName);
-                $update_query = "UPDATE services SET title=?, description=?, icon=? , image=? WHERE id=?";
-                $stmt = $conn->prepare($update_query);
-                $stmt->bind_param("ssssi", $title, $description, $icon, $image, $id);
-                
-                
-                if ($stmt->execute()) {
-                    returnSuccess('Service updated');
-                } else {
-                    returnError('Error updating service');
-                }
-
-            }
-        }
-    
-
-        
-    }else if ($_POST["action"] === "DELETION") {
-        // Check if the "id" parameter exists in the POST data
-        if (isset($_POST["id"])) {
-            $id = $_POST["id"];
-            // Prepare the SQL query to delete the record with the given ID
-            $query = "DELETE FROM services WHERE id = ?";
-            $stmt = $conn->prepare($query);
-            // Bind the parameter
-            $stmt->bind_param("i", $id);
-            // Execute the query
-            if ($stmt->execute()) {
-                // If deletion is successful, return success message
-                returnSuccess("Service Deleted");
-            } else {
-                // If deletion fails, return error message
-                returnError("Failed To Delete The Service");
-            }
-        } else {
-            // If "id" parameter is not provided, return error message
-            returnError("ID parameter is missing");
-        }
-    } else {
-        // If action is not "DELETION", return error message
-        returnError("Invalid action");
     }
-
 }
 
 
