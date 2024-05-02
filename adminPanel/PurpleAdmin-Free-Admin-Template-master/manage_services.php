@@ -334,6 +334,71 @@ $services = mysqli_query($conn,"SELECT * from services");
               </a>
             </li>
             <li class="nav-item">
+                <a
+                  class="nav-link"
+                  data-bs-toggle="collapse"
+                  href="#Users"
+                  aria-expanded="false"
+                  aria-controls="Users"
+                >
+                  <span class="menu-title">Users</span>
+                  <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="Users">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                      <a class="nav-link" href="users.php"
+                        >User Details
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a
+                  class="nav-link"
+                  data-bs-toggle="collapse"
+                  href="#homeContent"
+                  aria-expanded="false"
+                  aria-controls="homeContent"
+                >
+                  <span class="menu-title">Home Content</span>
+                  <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="homeContent">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                      <a class="nav-link" href="manage_home.php"
+                        >Manage Home Content</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="collapse"
+                href="#bannerSection"
+                aria-expanded="false"
+                aria-controls="bannerSection"
+              >
+                <span class="menu-title">Banner Section</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="bannerSection">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="add_home_banner.html">Add Banner</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="manage_home_banner.php"
+                      >Manage Banner</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+              <li class="nav-item">
               <a
                 class="nav-link"
                 data-bs-toggle="collapse"
@@ -352,6 +417,127 @@ $services = mysqli_query($conn,"SELECT * from services");
                   <li class="nav-item">
                     <a class="nav-link" href="manage_services.php"
                       >Manage Services</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="collapse"
+                href="#trustSection"
+                aria-expanded="false"
+                aria-controls="trustSection"
+              >
+                <span class="menu-title">Trust Section</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="trustSection">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="add_Trust.html">Add Trust</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="manage_Trust.php"
+                      >Manage Trust</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="collapse"
+                href="#bookingProcess"
+                aria-expanded="false"
+                aria-controls="bookingProcess"
+              >
+                <span class="menu-title">Booking Process</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="bookingProcess">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="add_booking_process.html">Add Booking</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="manage_booking_process.php"
+                      >Manage Booking</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="collapse"
+                href="#examcity"
+                aria-expanded="false"
+                aria-controls="examcity"
+              >
+                <span class="menu-title">Exam Cities</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="examcity">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="add_city.html">Add City</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="manage_city.php"
+                      >Manage City</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="collapse"
+                href="#functionCount"
+                aria-expanded="false"
+                aria-controls="functionCount"
+              >
+                <span class="menu-title">Functionality Count</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="functionCount">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="add_function.html">Add Function</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="manage_function.php"
+                      >Manage Function</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="collapse"
+                href="#faqs"
+                aria-expanded="false"
+                aria-controls="faqs"
+              >
+                <span class="menu-title">FAQs</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="faqs">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="add_question.html">Add Question</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="manage_question.php"
+                      >Manage Question</a
                     >
                   </li>
                 </ul>
@@ -389,14 +575,14 @@ $services = mysqli_query($conn,"SELECT * from services");
               <a
                 class="nav-link"
                 data-bs-toggle="collapse"
-                href="#ui-basic"
+                href="#faqs"
                 aria-expanded="false"
-                aria-controls="ui-basic"
+                aria-controls="faqs"
               >
                 <span class="menu-title">FAQs</span>
                 <i class="menu-arrow"></i>
               </a>
-              <div class="collapse" id="ui-basic">
+              <div class="collapse" id="faqs">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
                     <a class="nav-link" href="add_question.html">Add Question</a>
@@ -547,6 +733,11 @@ $services = mysqli_query($conn,"SELECT * from services");
                     </div>
                     <hr>
                     <div class="row">
+                      <div class="col-12">
+                      <div class="d-flex flex-row justify-content-center">
+                        <img src="../../assets/php/Images/<?php echo $service["image"]?>"/>
+                      </div> 
+                      </div>
                       <div class="col-md-6">
                        <b>Title:</b>
                       </div>
@@ -620,6 +811,16 @@ $services = mysqli_query($conn,"SELECT * from services");
                         </div>
                       </div>
                     </div> 
+                    <div class="row">
+                      <div class="col-xl-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="image">Service Image</label>
+                          <div class="col-sm-9">
+                            <input type="file" class="form-control" name="image" id="image" accept=".jpg, .jpeg, .png" value="" required>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <div class="form-group row text-center">
                         <button
                         type="submit"

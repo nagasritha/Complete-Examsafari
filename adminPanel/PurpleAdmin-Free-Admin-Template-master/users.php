@@ -1,3 +1,12 @@
+<?php
+require_once("../../assets/php/connection.php");
+session_start();
+
+// Fetch data from the services table
+
+$users = mysqli_query($conn,"SELECT * FROM loggedin_users");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,6 +22,7 @@
       rel="stylesheet"
       href="assets/vendors/mdi/css/materialdesignicons.min.css"
     />
+    <link rel="stylesheet" href="../../assets/css/style.css"/>
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
 
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -324,72 +334,46 @@
               </a>
             </li>
             <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#Users"
-                aria-expanded="false"
-                aria-controls="Users"
-              >
-                <span class="menu-title">Users</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="Users">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="users.php"
-                      >User Details
-                    </a>
-                  </li>
-                </ul>
-              </div>
-          </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#homeContent"
-                aria-expanded="false"
-                aria-controls="homeContent"
-              >
-                <span class="menu-title">Home Content</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="homeContent">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_home.html"> Add Home Content</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_home.php"
-                      >Manage Home Content</a>
-                  </li>
-                </ul>
-              </div>
+                <a
+                  class="nav-link"
+                  data-bs-toggle="collapse"
+                  href="#Users"
+                  aria-expanded="false"
+                  aria-controls="Users"
+                >
+                  <span class="menu-title">Users</span>
+                  <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="Users">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                      <a class="nav-link" href="users.php"
+                        >User Details
+                      </a>
+                    </li>
+                  </ul>
+                </div>
             </li>
             <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#bannerSection"
-                aria-expanded="false"
-                aria-controls="bannerSection"
-              >
-                <span class="menu-title">Banner Section</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="bannerSection">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_home_banner.html">Add Banner</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_home_banner.php"
-                      >Manage Banner</a
-                    >
-                  </li>
-                </ul>
-              </div>
+                <a
+                  class="nav-link"
+                  data-bs-toggle="collapse"
+                  href="#homeContent"
+                  aria-expanded="false"
+                  aria-controls="homeContent"
+                >
+                  <span class="menu-title">Home Content</span>
+                  <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="homeContent">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                      <a class="nav-link" href="manage_home.php"
+                        >Manage Home Content
+                      </a>
+                    </li>
+                  </ul>
+                </div>
             </li>
             <li class="nav-item">
               <a
@@ -442,102 +426,7 @@
                 </ul>
               </div>
             </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#trustSection"
-                aria-expanded="false"
-                aria-controls="trustSection"
-              >
-                <span class="menu-title">Trust Section</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="trustSection">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_Trust.html">Add Trust</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_Trust.php"
-                      >Manage Trust</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#bookingProcess"
-                aria-expanded="false"
-                aria-controls="bookingProcess"
-              >
-                <span class="menu-title">Booking Process</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="bookingProcess">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_booking_process.html">Add Trust</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_booking_process.php"
-                      >Manage Trust</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#examcity"
-                aria-expanded="false"
-                aria-controls="examcity"
-              >
-                <span class="menu-title">Exam Cities</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="examcity">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_city.html">Add City</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_city.php"
-                      >Manage City</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#functionCount"
-                aria-expanded="false"
-                aria-controls="functionCount"
-              >
-                <span class="menu-title">Functionality Count</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="functionCount">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_function.html">Add Function</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_function.php"
-                      >Manage Function</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
+
             <li class="nav-item">
               <a
                 class="nav-link"
@@ -669,65 +558,31 @@
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-            <div class="col-12">
+            <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Add New Service</h4>
-                  <form class="form-sample" id="addserviceForm">
-                    <div class="row mt-5">
-                      <div class="col-xl-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="title"
-                            >Service Title</label
-                          >
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" name="title" id="title" required/>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="description"
-                            >Service Description</label
-                          >
-                          <div class="col-sm-9">
-                            <textarea type="textarea" rows='20' col='50' class="form-control" name="description" id="description" required ></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-xl-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="icon">Service Icon</label>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" name="icon" id="icon" required/>
-                          </div>
-                        </div>
-                      </div>
-                    </div> 
-                    <div class="row">
-                      <div class="col-xl-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="image">Service Image</label>
-                          <div class="col-sm-9">
-                            <input type="file" class="form-control" name="image" id="image" accept=".jpg, .jpeg, .png" value="" required>
-                          </div>
-                        </div>
-                      </div>
-                    </div> 
-                    <div class="form-group row text-center ">
-                        <button
-                        type="submit"
-                        class="btn btn-gradient-primary mb-2"
-                        style="width:200px;"
-                      >
-                        Submit
-                      </button>
-                   
-                    </div>
-                  </form>
-                  <h4><b id="result" class="text-success"></b></h4>
+                  <h4 class="card-title">Users</h4>
+
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>id</th>
+                        <th>email</th>
+                        <th>timeValue</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach($users as $user) : ?>   
+                    <tr>
+                        <td><?php echo $user["id"]?></td>
+                        <td>
+                        <?php echo $user["email"]?>
+                        </td>
+                        <td><?php echo $user["timeValue"]?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>

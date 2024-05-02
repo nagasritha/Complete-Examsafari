@@ -442,126 +442,31 @@
                 </ul>
               </div>
             </li>
+
             <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#trustSection"
-                aria-expanded="false"
-                aria-controls="trustSection"
-              >
-                <span class="menu-title">Trust Section</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="trustSection">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_Trust.html">Add Trust</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_Trust.php"
-                      >Manage Trust</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#bookingProcess"
-                aria-expanded="false"
-                aria-controls="bookingProcess"
-              >
-                <span class="menu-title">Booking Process</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="bookingProcess">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_booking_process.html">Add Trust</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_booking_process.php"
-                      >Manage Trust</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#examcity"
-                aria-expanded="false"
-                aria-controls="examcity"
-              >
-                <span class="menu-title">Exam Cities</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="examcity">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_city.html">Add City</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_city.php"
-                      >Manage City</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#functionCount"
-                aria-expanded="false"
-                aria-controls="functionCount"
-              >
-                <span class="menu-title">Functionality Count</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="functionCount">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_function.html">Add Function</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_function.php"
-                      >Manage Function</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#faqs"
-                aria-expanded="false"
-                aria-controls="faqs"
-              >
-                <span class="menu-title">FAQs</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="faqs">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_question.html">Add Question</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_question.php"
-                      >Manage Question</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
+                <a
+                  class="nav-link"
+                  data-bs-toggle="collapse"
+                  href="#faqs"
+                  aria-expanded="false"
+                  aria-controls="faqs"
+                >
+                  <span class="menu-title">FAQs</span>
+                  <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="faqs">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                      <a class="nav-link" href="add_question.html">Add Question</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="manage_question.php"
+                        >Manage Question</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
 
             <li class="nav-item">
               <a
@@ -673,22 +578,22 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Add New Service</h4>
-                  <form class="form-sample" id="addserviceForm">
+                  <form class="form-sample" id="addhomebannerForm">
                     <div class="row mt-5">
                       <div class="col-xl-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="title"
-                            >Service Title</label
+                          <label class="col-sm-3 col-form-label" for="heading"
+                            >Banner Comment</label
                           >
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" name="title" id="title" required/>
+                            <input type="text" class="form-control" name="heading" id="heading" required/>
                           </div>
                         </div>
                       </div>
                       <div class="col-xl-6">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label" for="description"
-                            >Service Description</label
+                            >Banner Description</label
                           >
                           <div class="col-sm-9">
                             <textarea type="textarea" rows='20' col='50' class="form-control" name="description" id="description" required ></textarea>
@@ -699,17 +604,7 @@
                     <div class="row">
                       <div class="col-xl-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="icon">Service Icon</label>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" name="icon" id="icon" required/>
-                          </div>
-                        </div>
-                      </div>
-                    </div> 
-                    <div class="row">
-                      <div class="col-xl-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="image">Service Image</label>
+                          <label class="col-sm-3 col-form-label" for="image">Banner Image</label>
                           <div class="col-sm-9">
                             <input type="file" class="form-control" name="image" id="image" accept=".jpg, .jpeg, .png" value="" required>
                           </div>

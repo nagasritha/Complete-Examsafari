@@ -279,24 +279,24 @@
                   <h2 class="text-center mb-5" style="color: hsl(19,100%,50%);">Enquire Form</h2>
                   <form id="enquire-form" style="display: flex; flex-direction: column;">
                     <div class="enquire-input-container">
-                      <label for="username">Full Name<span>*</span></label>
+                      <label for="name">Full Name<span>*</span></label>
                       <input type="text" id="name" name="name" placeholder="Enter your full name" required>
                     </div>
                     <div class="enquire-input-container">
-                      <label for="number">WhatsApp Number<span>*</span></label>
-                      <input id="number" type="tel" placeholder="Enter you Whatsapp number" required>
+                      <label for="whatsapp_no">WhatsApp Number<span>*</span></label>
+                      <input id="whatsapp_no" name="whatsapp_no" type="tel" placeholder="Enter you Whatsapp number" required>
                     </div>
                     <div class="enquire-input-container">
                       <label for="address">Current Address<span>*</span></label>
-                      <textarea id="address" cols="" rows="" placeholder="Enter your current address"></textarea>
+                      <textarea id="address" name="address" cols="" rows="" placeholder="Enter your current address"></textarea>
                     </div>
                     <div class="enquire-input-container">
-                      <label for="near-busstop">Nearby Bus-Stop<span>*</span></label>
-                      <input type="text" id="near-busstop" placeholder="Enter your near by bus-stop" required>
+                      <label for="nearby_bus_stop">Nearby Bus-Stop<span>*</span></label>
+                      <input type="text" id="nearby_bus_stop" name="nearby_bus_stop" placeholder="Enter your near by bus-stop" required>
                     </div>
                     <div class="enquire-input-container">
                       <label for="exam">Select Exam<span>*</span></label>
-                      <select id="exam" >
+                      <select id="exam" name="exam">
                         <option value="select exam">Select an Exam</option>
                         <option value="select exam">UPSC</option>
                         <option value="select exam">JEE</option>
@@ -304,20 +304,20 @@
                       </select>
                     </div>
                     <div class="enquire-input-container">
-                      <label for="exam-date">Select Exam Date<span>*</span></label>
-                      <input type="date" id="exam-date" placeholder="" required >
+                      <label for="exam_date">Select Exam Date<span>*</span></label>
+                      <input type="date" id="exam_date" name="exam_date" placeholder="" required >
                     </div>
                     <div class="enquire-input-container">
-                      <label for="city">Exam City<span>*</span></label>
-                      <input type="text" id="city" placeholder="Enter your exam city" required>
+                      <label for="exam_city">Exam City<span>*</span></label>
+                      <input type="text" name="exam_city" id="exam_city" placeholder="Enter your exam city" required>
                     </div>
                     <div class="enquire-input-container">
-                        <label for="center">Exam Center<span>*</span></label>
-                        <input type="text" id="center" placeholder="Enter your exam center">
+                        <label for="exam_center">Exam Center<span>*</span></label>
+                        <input type="text" name="exam_center" id="exam_center" placeholder="Enter your exam center">
                     </div>
                     <div class="enquire-input-container">
-                        <label for="service">Select Required Service<span>*</span></label>
-                        <select id="service">
+                        <label for="req_service">Select Required Service<span>*</span></label>
+                        <select id="req_service" name="req_service">
                           <option value="select service">Select service</option>
                           <option value="travel">Travel</option>
                           <option value="accommodation">Accommodation</option>
@@ -325,13 +325,15 @@
                         </select>
                     </div>
                     <div class="enquire-input-container">
-                        <label for="admitcard">Upload Admit Card<span>*</span></label>
-                        <input type="file">
+                        <label for="admit_card">Upload Admit Card<span>*</span></label>
+                        <input type="file" required accept=".jpg, .jpeg, .png, .pdf" name="admit_card" id="admit_card">
+
                     </div>
                     <div class="submit-btn-container ">
                       <button class="btn btn-primary">Submit</button>
                     </div>
                   </form>
+                  <h4><b id="result"></b></h4>
                 </div>
               </div>
           </div>
@@ -943,5 +945,6 @@
     <script src="assets/js/main.js"></script>
     
     <script src="assets/js/login.js"></script>
+    <script src="assets/js/enquire_form.js"></script>
   </body>
 </html>
