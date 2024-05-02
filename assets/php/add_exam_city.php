@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Use prepared statements to prevent SQL injection
         
     }else if($_POST["action"]==="PUT"){
-        if ( !isset($_POST["title"])) {
+        if ( !isset($_POST["title"]) ) {
             returnError('Missing parameters for updation');
         }
 
@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($stmt->execute()) {
                     returnSuccess('City updated');
                 } else {
-                    returnError('Error updating trust');
+                    returnError('Error updating city');
                 }
 
             }

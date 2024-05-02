@@ -428,7 +428,7 @@ function pushBooking(formData){
 }
 //End of Home trust section
 
-//Booking section
+//city section
 let cityForm = document.getElementById("addcityForm");
 let Editcity = document.getElementById("editcityForm");
 let deleteCity = document.querySelectorAll(".cityDelete-btn");
@@ -480,18 +480,18 @@ function pushCity(formData){
         if (!response.ok) {
             throw new Error("Network issue to fetch the data");
         } else {
-            return response.text();
+            return response.json();
         }
     })
     .then(data => {
-        /*if(result){
+        if(result){
         result.textContent = data.message;
         }
         if(data.success){
-            if(data.message == "Booking Deleted" || data.message ==  "Booking updated"){
+            if(data.message == "City Deleted" || data.message ==  "City updated"){
         location.reload();
                 }
-        }*/
+        }
        console.log(data);
     })
     .catch(error => {
@@ -500,3 +500,76 @@ function pushCity(formData){
     });
 }
 //End of Exam city section
+
+//function count section
+let functionForm = document.getElementById("addfunctionForm");
+let EditFunction = document.getElementById("editfunctionForm");
+let deleteFunction = document.querySelectorAll(".functionDelete-btn");
+
+
+if(functionForm){
+   
+    functionForm.addEventListener("submit",function(event){
+        event.preventDefault();
+        console.log("called");
+        let formData = new FormData(this);
+        formData.append("action","POST");
+        pushFunction(formData);
+    })
+}
+
+if(EditFunction){
+    EditFunction.addEventListener("submit",function(event){
+        event.preventDefault();
+        console.log("called");
+        let formData = new FormData(this);
+        formData.append("action","PUT");
+        formData.append("id",id);
+        console.log(id);
+        pushFunction(formData);
+    })
+}
+
+if(deleteFunction){
+    deleteFunction.forEach(function(button){
+        button.addEventListener("click",function(){
+            let id = this.getAttribute("data-service-id");
+        let formData = new FormData();
+        formData.append("action","DELETION");
+        formData.append("id",id);
+        pushFunction(formData);
+        })
+    });
+}
+
+function pushFunction(formData){
+   console.log("I am called");
+    fetch('../../assets/php/add_function_count.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        console.log(response);
+        if (!response.ok) {
+            throw new Error("Network issue to fetch the data");
+        } else {
+            return response.json();
+        }
+    })
+    .then(data => {
+        if(result){
+        result.textContent = data.message;
+        }
+        if(data.success){
+            if(data.message == "Function Count Deleted" || data.message ==  "Function Count updated"){
+        location.reload();
+                }
+        }
+       console.log(data);
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+        alert("Error: " + error.message);
+    });
+}
+//End of function count section
