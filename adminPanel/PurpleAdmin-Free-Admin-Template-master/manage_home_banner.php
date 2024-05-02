@@ -1,3 +1,12 @@
+<?php
+require_once("../../assets/php/connection.php");
+session_start();
+
+// Fetch data from the services table
+
+$banners = mysqli_query($conn,"SELECT * from home_banner_carousal");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,6 +22,7 @@
       rel="stylesheet"
       href="assets/vendors/mdi/css/materialdesignicons.min.css"
     />
+    <link rel="stylesheet" href="../../assets/css/style.css"/>
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
 
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -324,50 +334,47 @@
               </a>
             </li>
             <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#Users"
-                aria-expanded="false"
-                aria-controls="Users"
-              >
-                <span class="menu-title">Users</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="Users">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="users.php"
-                      >User Details
-                    </a>
-                  </li>
-                </ul>
-              </div>
-          </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#homeContent"
-                aria-expanded="false"
-                aria-controls="homeContent"
-              >
-                <span class="menu-title">Home Content</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="homeContent">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_home.html"> Add Home Content</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_home.php"
-                      >Manage Home Content</a>
-                  </li>
-                </ul>
-              </div>
+                <a
+                  class="nav-link"
+                  data-bs-toggle="collapse"
+                  href="#Users"
+                  aria-expanded="false"
+                  aria-controls="Users"
+                >
+                  <span class="menu-title">Users</span>
+                  <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="Users">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                      <a class="nav-link" href="users.php"
+                        >User Details
+                      </a>
+                    </li>
+                  </ul>
+                </div>
             </li>
             <li class="nav-item">
+                <a
+                  class="nav-link"
+                  data-bs-toggle="collapse"
+                  href="#homeContent"
+                  aria-expanded="false"
+                  aria-controls="homeContent"
+                >
+                  <span class="menu-title">Home Content</span>
+                  <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="homeContent">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                      <a class="nav-link" href="manage_home.php"
+                        >Manage Home Content</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
               <a
                 class="nav-link"
                 data-bs-toggle="collapse"
@@ -391,7 +398,7 @@
                 </ul>
               </div>
             </li>
-            <li class="nav-item">
+              <li class="nav-item">
               <a
                 class="nav-link"
                 data-bs-toggle="collapse"
@@ -442,102 +449,7 @@
                 </ul>
               </div>
             </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#trustSection"
-                aria-expanded="false"
-                aria-controls="trustSection"
-              >
-                <span class="menu-title">Trust Section</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="trustSection">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_Trust.html">Add Trust</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_Trust.php"
-                      >Manage Trust</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#bookingProcess"
-                aria-expanded="false"
-                aria-controls="bookingProcess"
-              >
-                <span class="menu-title">Booking Process</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="bookingProcess">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_booking_process.html">Add Trust</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_booking_process.php"
-                      >Manage Trust</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#examcity"
-                aria-expanded="false"
-                aria-controls="examcity"
-              >
-                <span class="menu-title">Exam Cities</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="examcity">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_city.html">Add City</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_city.php"
-                      >Manage City</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#functionCount"
-                aria-expanded="false"
-                aria-controls="functionCount"
-              >
-                <span class="menu-title">Functionality Count</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="functionCount">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_function.html">Add Function</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_function.php"
-                      >Manage Function</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
+
             <li class="nav-item">
               <a
                 class="nav-link"
@@ -669,26 +581,92 @@
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Add New Service</h4>
-                  <form class="form-sample" id="addserviceForm">
+
+            
+            <div class="row">
+             
+              <?php
+              foreach($banners as $banner) :
+                ?>
+              <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                    <div class="col-sm-8">
+                    <h3 class="card-title">Banner <span id=""><?php echo $banner['id'] ?></span></h3>
+                    </div>
+                    <div class="col-sm-4">
+                    <button class="card-title edit-btn bg-transparent border-0" data-service-id="<?php echo $banner['id']?>">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                      </svg>
+                    </button>
+                    <button class="card-title bannerDelete-btn bg-transparent border-0" data-service-id="<?php echo $banner['id']?>">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                      </svg>
+                    </button>
+                    </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-12">
+                      <div class="d-flex flex-row justify-content-center">
+                        <img src="../../assets/php/Images/<?php echo $banner["bannerImage"]?>"/>
+                      </div> 
+                    </div>
+                    <div class="row mt-2">
+                    <div class="col-md-6">
+                       <b>Comment:</b>
+                      </div>
+                      <div class="col-md-6">
+                        <p><?php echo $banner['heading']?></p>
+                     </div>
+                    </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-md-6">
+                       <b>Description:</b>
+                      </div>
+                      <div class="col-md-6">
+                        <p><?php echo $banner['description']?></p>
+                     </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <?php
+              endforeach;
+              ?>
+              
+              <div class="signup-popup-container" id="service-Edit-card">
+                <div class="signup-popup-card">
+                <div class="row">   
+                <h4 class="card-title col-10">Edit Service</h4>
+                <button id="close-service-Edit-card" class="border-0 bg-transparent col-2"><svg style="font-size:20px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                </svg>
+                </button>
+                </div>
+                <hr/>
+                <form class="form-sample" id="edithomebannerForm">
                     <div class="row mt-5">
                       <div class="col-xl-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="title"
-                            >Service Title</label
+                          <label class="col-sm-3 col-form-label" for="heading"
+                            >Banner Comment</label
                           >
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" name="title" id="title" required/>
+                            <input type="text" class="form-control" name="heading" id="heading" required/>
                           </div>
                         </div>
                       </div>
                       <div class="col-xl-6">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label" for="description"
-                            >Service Description</label
+                            >Banner Description</label
                           >
                           <div class="col-sm-9">
                             <textarea type="textarea" rows='20' col='50' class="form-control" name="description" id="description" required ></textarea>
@@ -699,17 +677,7 @@
                     <div class="row">
                       <div class="col-xl-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="icon">Service Icon</label>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" name="icon" id="icon" required/>
-                          </div>
-                        </div>
-                      </div>
-                    </div> 
-                    <div class="row">
-                      <div class="col-xl-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="image">Service Image</label>
+                          <label class="col-sm-3 col-form-label" for="image">Banner Image</label>
                           <div class="col-sm-9">
                             <input type="file" class="form-control" name="image" id="image" accept=".jpg, .jpeg, .png" value="" required>
                           </div>
@@ -727,10 +695,11 @@
                    
                     </div>
                   </form>
-                  <h4><b id="result" class="text-success"></b></h4>
-                </div>
+                  <h3><b id="result"></b></h3>
               </div>
+               
             </div>
+          </div>
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->

@@ -1,3 +1,14 @@
+<?php
+require_once("../../assets/php/connection.php");
+session_start();
+
+// Fetch data from the services table
+
+$home_page_result = mysqli_query($conn,"SELECT * from home_page");
+$home_page = mysqli_fetch_assoc($home_page_result);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -323,74 +334,28 @@
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
+            
             <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#Users"
-                aria-expanded="false"
-                aria-controls="Users"
-              >
-                <span class="menu-title">Users</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="Users">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="users.php"
-                      >User Details
-                    </a>
-                  </li>
-                </ul>
-              </div>
-          </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#homeContent"
-                aria-expanded="false"
-                aria-controls="homeContent"
-              >
-                <span class="menu-title">Home Content</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="homeContent">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_home.html"> Add Home Content</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_home.php"
-                      >Manage Home Content</a>
-                  </li>
-                </ul>
-              </div>
+                <a
+                  class="nav-link"
+                  data-bs-toggle="collapse"
+                  href="#homeContent"
+                  aria-expanded="false"
+                  aria-controls="homeContent"
+                >
+                  <span class="menu-title">Home Content</span>
+                  <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="homeContent">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                      <a class="nav-link" href="manage_home.php"
+                        >Manage Home Content</a>
+                    </li>
+                  </ul>
+                </div>
             </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#bannerSection"
-                aria-expanded="false"
-                aria-controls="bannerSection"
-              >
-                <span class="menu-title">Banner Section</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="bannerSection">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_home_banner.html">Add Banner</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_home_banner.php"
-                      >Manage Banner</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
+            
             <li class="nav-item">
               <a
                 class="nav-link"
@@ -442,126 +407,31 @@
                 </ul>
               </div>
             </li>
+
             <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#trustSection"
-                aria-expanded="false"
-                aria-controls="trustSection"
-              >
-                <span class="menu-title">Trust Section</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="trustSection">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_Trust.html">Add Trust</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_Trust.php"
-                      >Manage Trust</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#bookingProcess"
-                aria-expanded="false"
-                aria-controls="bookingProcess"
-              >
-                <span class="menu-title">Booking Process</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="bookingProcess">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_booking_process.html">Add Trust</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_booking_process.php"
-                      >Manage Trust</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#examcity"
-                aria-expanded="false"
-                aria-controls="examcity"
-              >
-                <span class="menu-title">Exam Cities</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="examcity">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_city.html">Add City</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_city.php"
-                      >Manage City</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#functionCount"
-                aria-expanded="false"
-                aria-controls="functionCount"
-              >
-                <span class="menu-title">Functionality Count</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="functionCount">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_function.html">Add Function</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_function.php"
-                      >Manage Function</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#faqs"
-                aria-expanded="false"
-                aria-controls="faqs"
-              >
-                <span class="menu-title">FAQs</span>
-                <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="faqs">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="add_question.html">Add Question</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="manage_question.php"
-                      >Manage Question</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
+                <a
+                  class="nav-link"
+                  data-bs-toggle="collapse"
+                  href="#faqs"
+                  aria-expanded="false"
+                  aria-controls="faqs"
+                >
+                  <span class="menu-title">FAQs</span>
+                  <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="faqs">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                      <a class="nav-link" href="add_question.html">Add Question</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="manage_question.php"
+                        >Manage Question</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </li>
 
             <li class="nav-item">
               <a
@@ -672,50 +542,179 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Add New Service</h4>
-                  <form class="form-sample" id="addserviceForm">
+                  <h4 class="card-title">Home Content</h4>
+                  <form class="form-sample" id="addHomeContentForm">
                     <div class="row mt-5">
                       <div class="col-xl-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="title"
-                            >Service Title</label
+                          <label class="col-sm-3 col-form-label" for="logo"
+                            >
+                            <div class="row">
+                            <div class="col-12">
+                            <img src="../../assets/php/Images/<?php echo $home_page["logo"]?>" style="margin-top:-30px;" width="100"/>
+                            <p>Logo</p>
+                            </div>
+                            </div>
+                            </label
                           >
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" name="title" id="title" required/>
+                            
+                            <input type="file" class="form-control" name="logo" id="logo" accept=".jpg, .jpeg, .png" value="">
                           </div>
                         </div>
                       </div>
                       <div class="col-xl-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="description"
-                            >Service Description</label
+                          <label class="col-sm-3 col-form-label" for="service_qt"
+                            >service Question</label
                           >
                           <div class="col-sm-9">
-                            <textarea type="textarea" rows='20' col='50' class="form-control" name="description" id="description" required ></textarea>
+                            <input type="text" class="form-control" name="service_qt" id="service_qt" required value="<?php echo $home_page["service_qt"]?>"/>
                           </div>
                         </div>
                       </div>
+                      <div class="col-xl-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="service_hd"
+                            >Service Heading</label
+                          >
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="service_hd" id="service_hd" required value="<?php echo $home_page["service_hd"]?>"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-6">
+                    <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="about_qt"
+                            >About Question</label
+                          >
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="about_qt" id="about_qt" required value="<?php echo $home_page["about_qt"]?>"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="about_hd"
+                            >About Heading</label
+                          >
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="about_hd" id="about_hd" required value="<?php echo $home_page["about_hd"]?>"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="about_content"
+                            >About Content</label
+                          >
+                          <div class="col-sm-9">
+                            <textarea rows="20" cols="50" class="form-control" name="about_content" id="about_content" required ><?php echo $home_page["about_content"]?></textarea>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="about_comment"
+                            >About Comment</label
+                          >
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="about_comment" id="about_comment" required value="<?php echo $home_page["about_comment"]?>"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-6">
+                    <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="trust_qt"
+                            >Trust Question</label
+                          >
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="trust_qt" id="trust_qt" required value="<?php echo $home_page["trust_qt"]?>"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="trust_hd"
+                            >Trust Heading</label
+                          >
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="trust_hd" id="trust_hd" required value="<?php echo $home_page["trust_hd"]?>"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-6">
+                        <div class="form-group row">
+                              <label class="col-sm-3 col-form-label" for="booking_ht1"
+                                >Booking Heading1</label
+                              >
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" name="booking_ht1" id="booking_ht1" required value="<?php echo $home_page["booking_ht1"]?>"/>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-xl-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label" for="booking_ht2"
+                                >Booking Heading2</label
+                              >
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control" name="booking_ht2" id="booking_ht2" required value="<?php echo $home_page["booking_ht2"]?>"/>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-xl-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="cities_ht1"
+                            >Cities Heading1</label
+                            >
+                            <div class="col-sm-9">
+                            <input type="text" class="form-control" name="cities_ht1" id="cities_ht1" required value="<?php echo $home_page["cities_ht1"]?>"/>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-xl-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" for="cities_ht2"
+                                >Cities Heading2</label
+                                >
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" name="cities_ht2" id="cities_ht2" required value="<?php echo $home_page["cities_ht2"]?>"/>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-xl-6">
+                            <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="final_t"
+                                    >Final Text</label
+                                    >
+                                    <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="final_t" id="final_t" required value="<?php echo $home_page["final_t"]?>"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="faq_ht1"
+                                    >FAQ Heading1</label
+                                    >
+                                    <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="faq_ht1" id="faq_ht1" required value="<?php echo $home_page["faq_ht1"]?>"/>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="col-xl-6">
+                                <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="faq_ht2"
+                                        >FAQ Heading2</label
+                                        >
+                                        <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="faq_ht2" id="faq_ht2" required value="<?php echo $home_page["faq_ht2"]?>"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                  
                     </div>
-                    <div class="row">
-                      <div class="col-xl-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="icon">Service Icon</label>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" name="icon" id="icon" required/>
-                          </div>
-                        </div>
-                      </div>
-                    </div> 
-                    <div class="row">
-                      <div class="col-xl-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label" for="image">Service Image</label>
-                          <div class="col-sm-9">
-                            <input type="file" class="form-control" name="image" id="image" accept=".jpg, .jpeg, .png" value="" required>
-                          </div>
-                        </div>
-                      </div>
-                    </div> 
                     <div class="form-group row text-center ">
                         <button
                         type="submit"

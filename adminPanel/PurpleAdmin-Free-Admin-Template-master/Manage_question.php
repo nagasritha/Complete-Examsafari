@@ -390,14 +390,14 @@ $faqs = mysqli_query($conn,"SELECT * from faqs");
               <a
                 class="nav-link"
                 data-bs-toggle="collapse"
-                href="#ui-basic"
+                href="#faqs"
                 aria-expanded="false"
-                aria-controls="ui-basic"
+                aria-controls="faqs"
               >
                 <span class="menu-title">FAQs</span>
                 <i class="menu-arrow"></i>
               </a>
-              <div class="collapse" id="ui-basic">
+              <div class="collapse" id="faqs">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
                     <a class="nav-link" href="add_question.html">Add Question</a>
