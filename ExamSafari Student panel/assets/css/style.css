@@ -22977,7 +22977,7 @@ dl li {
 }
 .page-body-wrapper.full-page-wrapper {
   width: 100%;
-min-height:100% ;
+  min-height: 100%;
 }
 @media (max-width: 991px) {
   .page-body-wrapper {
@@ -23041,4 +23041,36 @@ main .table table,
 th,
 td {
   padding: 1rem;
+}
+.btn-primary {
+  display: inline-block;
+  color: #ffffff;
+  background-color: #5764ec;
+  background-image: linear-gradient(
+    135deg,
+    #ff561d 0%,
+    #ff561d 50%,
+    #5764ec 50%,
+    #5764ec 100%
+  );
+  background-position: right center;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background;
+  transition-property: color, background;
+  -webkit-transition-timing-function: ease;
+  transition-timing-function: ease;
+  background-size: 270% auto;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-position: left center;
+  -webkit-box-shadow: unset !important;
+  -moz-box-shadow: unset !important;
+  box-shadow: unset !important;
 }

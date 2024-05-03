@@ -17,7 +17,7 @@ function handleRadioButtonClick(event) {
   continueButton.classList.add(
     "continue-button",
     "btn",
-    "btn-warning",
+    "btn-primary",
     "mt-3",
     "ml-5",
     "text-white"
