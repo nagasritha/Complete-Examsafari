@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Breeze Admin</title>
+    <link
+      rel="stylesheet"
+      href="../../assets/vendors/mdi/css/materialdesignicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../assets/vendors/flag-icon-css/css/flag-icon.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../assets/vendors/css/vendor.bundle.base.css"
+    />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+    <style>
+      .payment-status-container {
+        width: 100% !important;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 30px;
+      }
+      .payment-status-container hr {
+        width: 25px;
+        font-weight: bold;
+        height: 2px;
+      }
+      .payment-processing hr {
+        background-color: darkgreen;
+      }
+      .payment hr {
+        background-color: gray;
+      }
+      .payment-status-details,
+      .payment-processing,
+      .payment {
+        align-items: center;
+        font-size: 20px;
+        font-weight: 400;
+        gap: 10px;
+      }
+      .payment-status-details div i {
+        color: darkgreen;
+        font-size: 55px;
+      }
+      .payment-processing div,
+      .payment div {
+        background-color: white;
+        width: 50px;
+        height: 50px;
+        background-color: rgb(203, 201, 201);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: black;
+        border: 3px solid darkgreen;
+        border-radius: 50%;
+        text-align: center;
+      }
+      .payment div {
+        border: none;
+      }
+      @media (max-width: 932px) {
+        .payment-status-container {
+          gap: 10px;
+        }
+        .payment-processing div,
+        .payment div {
+          width: 40px;
+          height: 40px;
+          font-size: 14px;
+        }
+        .payment-status-details div i {
+          font-size: 45px;
+        }
+        .payment-processing,
+        .payment,
+        .payment-status-details {
+          gap: 5px;
+        }
+        .payment-status-container hr {
+          width: 15px;
+        }
+        .payment-status-details,
+        .payment-processing,
+        .payment {
+          align-items: center;
+          font-size: 15px;
+          font-weight: 400;
+          gap: 5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div
+          class="text-center sidebar-brand-wrapper d-flex align-items-center"
+        >
+          <a class="sidebar-brand brand-logo" href="../../index.html"
+            ><img src="../../assets/images/1-removebg-preview.png" alt="logo"
+          /></a>
+          <!-- <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="index.html"><img src="assets/images/1.jpg" alt="logo" /></a> -->
+        </div>
+        <ul class="nav">
+          <li class="nav-item nav-profile">
+            <a href="#" class="nav-link">
+              <div class="nav-profile-image">
+                <img src="../../assets/images/faces/face1.jpg" alt="profile" />
+                <span class="login-status online"></span>
+                <!--change to offline or busy as needed-->
+              </div>
+              <div class="nav-profile-text d-flex flex-column pr-3">
+                <span class="font-weight-medium mb-2">Sandeep Kumar</span>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../index.html">
+              <i class="mdi mdi-home menu-icon"></i>
+              <span class="menu-title">Student Dashboard</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="../icons/personal.html">
+              <i class="mdi mdi-contacts menu-icon"></i>
+              <span class="menu-title">Personal Details</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../forms/basic_elements.html">
+              <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+              <span class="menu-title">Bookings</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../charts/chartjs.html">
+              <i class="mdi mdi-square-inc-cash menu-icon"></i>
+              <span class="menu-title">Payment Details</span>
+            </a>
+          </li>
+
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="pages/charts/chartjs.html">
+              <i class="mdi mdi-chart-bar menu-icon"></i>
+              <span class="menu-title">Notification</span>
+            </a>
+          </li> -->
+
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="pages/charts/chartjs.html">
+              <i class="mdi mdi-logout menu-icon"></i>
+              <span class="menu-title">Logout</span>
+            </a>
+          </li> -->
+        </ul>
+      </nav>
+      <div class="container-fluid page-body-wrapper">
+        <div id="theme-settings" class="settings-panel">
+          <i class="settings-close mdi mdi-close"></i>
+          <p class="settings-heading">SIDEBAR SKINS</p>
+          <div class="sidebar-bg-options selected" id="sidebar-default-theme">
+            <div class="img-ss rounded-circle bg-light border mr-3"></div>
+            Default
+          </div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme">
+            <div class="img-ss rounded-circle bg-dark border mr-3"></div>
+            Dark
+          </div>
+          <p class="settings-heading mt-2">HEADER SKINS</p>
+          <div class="color-tiles mx-0 px-4">
+            <div class="tiles light"></div>
+            <div class="tiles dark"></div>
+          </div>
+        </div>
+        <nav class="navbar col-lg-12 col-12 p-lg-0 fixed-top d-flex flex-row">
+          <div
+            class="navbar-menu-wrapper d-flex align-items-stretch justify-content-between"
+          >
+            <a
+              class="navbar-brand brand-logo-mini align-self-center d-lg-none"
+              href="../../index.html"
+              ><img src="../../assets/images/logo-mini.svg" alt="logo"
+            /></a>
+            <button
+              class="navbar-toggler navbar-toggler align-self-center mr-2"
+              type="button"
+              data-toggle="minimize"
+            >
+              <i class="mdi mdi-menu"></i>
+            </button>
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link count-indicator dropdown-toggle"
+                  id="notificationDropdown"
+                  href="#"
+                  data-toggle="dropdown"
+                >
+                  <i class="mdi mdi-bell-outline"></i>
+                  <span class="count count-varient1">7</span>
+                </a>
+                <div
+                  class="dropdown-menu navbar-dropdown navbar-dropdown-large preview-list"
+                  aria-labelledby="notificationDropdown"
+                >
+                  <h6 class="p-3 mb-0">Notifications</h6>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <img
+                        src="../../assets/images/faces/face4.jpg"
+                        alt=""
+                        class="profile-pic"
+                      />
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="mb-0">
+                        Dany Miles
+                        <span class="text-small text-muted"
+                          >commented on your photo</span
+                        >
+                      </p>
+                    </div>
+                  </a>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <img
+                        src="../../assets/images/faces/face3.jpg"
+                        alt=""
+                        class="profile-pic"
+                      />
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="mb-0">
+                        James
+                        <span class="text-small text-muted"
+                          >posted a photo on your wall</span
+                        >
+                      </p>
+                    </div>
+                  </a>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <img
+                        src="../../assets/images/faces/face2.jpg"
+                        alt=""
+                        class="profile-pic"
+                      />
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="mb-0">
+                        Alex
+                        <span class="text-small text-muted"
+                          >just mentioned you in his post</span
+                        >
+                      </p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <p class="p-3 mb-0">View all activities</p>
+                </div>
+              </li>
+              <li class="nav-item dropdown d-none d-sm-flex">
+                <a
+                  class="nav-link count-indicator dropdown-toggle"
+                  id="messageDropdown"
+                  href="#"
+                  data-toggle="dropdown"
+                >
+                  <i class="mdi mdi-email-outline"></i>
+                  <span class="count count-varient2">5</span>
+                </a>
+                <div
+                  class="dropdown-menu navbar-dropdown navbar-dropdown-large preview-list"
+                  aria-labelledby="messageDropdown"
+                >
+                  <h6 class="p-3 mb-0">Messages</h6>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-item-content flex-grow">
+                      <span class="badge badge-pill badge-success"
+                        >Request</span
+                      >
+                      <p class="text-small text-muted ellipsis mb-0">
+                        Suport needed for user123
+                      </p>
+                    </div>
+                    <p class="text-small text-muted align-self-start">
+                      4:10 PM
+                    </p>
+                  </a>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-item-content flex-grow">
+                      <span class="badge badge-pill badge-warning"
+                        >Invoices</span
+                      >
+                      <p class="text-small text-muted ellipsis mb-0">
+                        Invoice for order is mailed
+                      </p>
+                    </div>
+                    <p class="text-small text-muted align-self-start">
+                      4:10 PM
+                    </p>
+                  </a>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-item-content flex-grow">
+                      <span class="badge badge-pill badge-danger"
+                        >Projects</span
+                      >
+                      <p class="text-small text-muted ellipsis mb-0">
+                        New project will start tomorrow
+                      </p>
+                    </div>
+                    <p class="text-small text-muted align-self-start">
+                      4:10 PM
+                    </p>
+                  </a>
+                  <h6 class="p-3 mb-0">See all activity</h6>
+                </div>
+              </li>
+              <li
+                class="nav-item nav-search border-0 ml-1 ml-md-3 ml-lg-5 d-none d-md-flex"
+              >
+                <form class="nav-link form-inline mt-2 mt-md-0">
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Search"
+                    />
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="mdi mdi-magnify"></i>
+                      </span>
+                    </div>
+                  </div>
+                </form>
+              </li>
+            </ul>
+            <ul class="navbar-nav navbar-nav-right ml-lg-auto">
+              <li class="nav-item dropdown d-none d-xl-flex border-0">
+                <a
+                  class="nav-link dropdown-toggle"
+                  id="languageDropdown"
+                  href="#"
+                  data-toggle="dropdown"
+                >
+                  <i class="mdi mdi-earth"></i> English
+                </a>
+                <div
+                  class="dropdown-menu navbar-dropdown"
+                  aria-labelledby="languageDropdown"
+                >
+                  <a class="dropdown-item" href="#"> French </a>
+                  <a class="dropdown-item" href="#"> Spain </a>
+                  <a class="dropdown-item" href="#"> Latin </a>
+                  <a class="dropdown-item" href="#"> Japanese </a>
+                </div>
+              </li>
+              <li class="nav-item nav-profile dropdown border-0">
+                <a
+                  class="nav-link dropdown-toggle"
+                  id="profileDropdown"
+                  href="#"
+                  data-toggle="dropdown"
+                >
+                  <img
+                    class="nav-profile-img mr-2"
+                    alt=""
+                    src="../../assets/images/faces/face1.jpg"
+                  />
+                  <span class="profile-name">Henry Klein</span>
+                </a>
+                <div
+                  class="dropdown-menu navbar-dropdown w-100"
+                  aria-labelledby="profileDropdown"
+                >
+                  <a class="dropdown-item" href="#">
+                    <i class="mdi mdi-cached mr-2 text-success"></i> Activity
+                    Log
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <i class="mdi mdi-logout mr-2 text-primary"></i> Signout
+                  </a>
+                </div>
+              </li>
+            </ul>
+            <button
+              class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
+              type="button"
+              data-toggle="offcanvas"
+            >
+              <span class="mdi mdi-menu"></span>
+            </button>
+          </div>
+        </nav>
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <!--payment-details-start-->
+            <div
+              class="payment-status-container mb-5 w-100 d-flex align-items-center justify-content-center"
+            >
+              <div class="d-flex payment-status-details">
+                <div class="status-done">
+                  <i class="mdi mdi-check-circle"></i>
+                </div>
+                Details
+              </div>
+
+              <div class="d-flex payment-processing">
+                <hr />
+                <div class="status-processing">2</div>
+                Processing
+              </div>
+              <div class="d-flex payment">
+                <hr />
+                <div class="status-not-active">3</div>
+                Payment
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <h1>Payment</h1>
+              <p class="fs-3">
+                Need help, we are here
+                <a class="fw-bold" href="#">Contact us</a>
+              </p>
+            </div>
+            <div class="payment-card bg-white pl-3 pt-4 pb-5 rounded-3 pr-3">
+              <div>
+                <h4>Deposit Payment</h4>
+                <p>
+                  Congratulations! You've made it to the final step. Please pay
+                  the deposit payment to comfirm your booking.
+                </p>
+              </div>
+              <hr />
+              <div>
+                <div class="deposit d-flex justify-content-between">
+                  <p class="text-muted">Deposit Payment</p>
+                  <p class="text-muted">$250</p>
+                </div>
+                <div class="gateway d-flex justify-content-between">
+                  <p class="text-muted">
+                    Payment Gateway Charges
+                    <i class="mdi mdi-alert-circle-outline mdi-icon"></i>
+                  </p>
+                  <p class="text-muted">$9.07</p>
+                </div>
+                <div class="total d-flex justify-content-between">
+                  <h3 class="fw-bold"><strong>Total Payable Amount</strong></h3>
+                  <h5><strong>$259.07</strong></h5>
+                </div>
+              </div>
+              <hr />
+              <div class="d-flex">
+                <b class="pr-2 text-gray">Suggestion: </b>
+                <p>
+                  Please make sure international payments are enabled on your
+                  card for successful payment transaction.
+                </p>
+              </div>
+              <hr />
+              <div class="d-flex">
+                <b class="pr-2 text-gray">Terms: </b>
+                <p>
+                  By contnung, you accept all the
+                  <a href=""><b>Terms and Conditions</b></a> and authorize
+                  examsafi.com to confirm your acceptance with the property.
+                  Your booking is not completed until you receive confirmation
+                  from the property.
+                </p>
+              </div>
+              <a
+                class="btn btn-primary h-20 w-40 pt-2 pb-2"
+                href="../charts/makePayment.html"
+                >Make Payment
+              </a>
+            </div>
+          </div>
+          <footer class="footer">
+            <div
+              class="d-sm-flex justify-content-center justify-content-sm-between"
+            >
+              <span
+                class="text-muted d-block text-center text-sm-left d-sm-inline-block"
+                >Copyright © bootstrapdash.com 2020</span
+              >
+              <span
+                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+              >
+                Free
+                <a href="https://www.bootstrapdash.com/" target="_blank"
+                  >Bootstrap dashboard template</a
+                >
+                from Bootstrapdash.com</span
+              >
+            </div>
+          </footer>
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <script src="../../assets/js/chart.js"></script>
+  </body>
+</html>
